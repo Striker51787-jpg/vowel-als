@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm -v)",
+      "Bash(sed -n '/Phase 3/,/Phase 4/p' /Users/ahanmalepati/.claude/plans/foamy-enchanting-breeze.md)",
+      "Bash(which uv *)",
+      "Bash(cd /Users/ahanmalepati/.claude/plans && grep -n -i -E \"quality|/score|/predict|endpoint|band|threshold|api\" foamy-enchanting-breeze.md | head -60; ls \"/Users/ahanmalepati/Claude Code/Congressional App Challenge ALS/.claude\")",
+      "Bash(npx --yes create-expo-app@latest app --yes)",
+      "Bash(git -C . rev-parse --show-toplevel)",
+      "Bash(rm -rf .git)",
+      "Bash(curl -sL https://docs.expo.dev/versions/v58.0.0/sdk/audio.md)",
+      "Bash(grep -n -A12 \"^### \\\\`RecordingOptions\\\\`\\\\|^### \\\\`RecorderState\\\\`\\\\|^### \\\\`AudioMode\\\\`\" audio.md)",
+      "Bash(npx expo *)"
+    ]
+  }
+}

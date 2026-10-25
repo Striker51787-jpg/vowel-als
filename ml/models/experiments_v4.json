@@ -1,0 +1,23 @@
+{
+  "n_configs_tried": 84,
+  "repeats": 3,
+  "ensemble_plain_cv_auc": {
+    "ens_all": 0.6971036780725361,
+    "ens_embeddings": 0.691913366653851
+  },
+  "nested_selection_auc_mean": 0.6783929257977701,
+  "nested_selection_auc_repeats": [
+    0.6849288735101885,
+    0.6947327950788158,
+    0.655517108804306
+  ],
+  "selected_config_counts": {
+    "emb_wavlm_L3 | emb_logreg_C0.01": 5,
+    "emb_wavlm_L6 | emb_logreg_C0.01": 3,
+    "pooled_clinical+mfcc_pooled | logreg_C0.1": 2,
+    "pooled_clinical+mfcc_pooled | logreg_C0.01": 2,
+    "emb_wav2vec2_L9 | emb_logreg_C0.003": 1,
+    "pooled_clinical+mfcc_pooled | rf_depth3": 1,
+    "emb_wavlm_L6 | emb_logreg_C0.003": 1
+  }
+}

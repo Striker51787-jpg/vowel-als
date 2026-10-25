@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Result and home motion spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 64px 80px 80px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 960px">
+    <div style="font-size: 18px; color: #3E4B58; font-weight: 700; letter-spacing: 1px; text-transform: uppercase">Step 4 · Result and home · motion spec and result checks</div>
+    <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 48px; line-height: 1.12">The result arrives like a held breath, not a reveal.</h1>
+    <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #3E4B58">On the result screen nothing moves. Content only fades in, slowly, in the order it should be read. There is no scale, slide, confetti, sound or haptic. The "not a diagnosis" line and the save button are visible from the first frame, because safety information is never animated in.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; border: 1px solid #DDD5C6; border-radius: 24px; background: #FFFFFF; overflow: hidden">
+    <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 16px 28px; background: #E6EFF2; font-size: 17px; font-weight: 700">
+      <div>Moment</div><div>Trigger and what moves</div><div>Duration</div><div>Easing</div><div>Reduce Motion</div>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+      <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 18px 28px; border-top: 1px solid #EFE9DC; font-size: 18px; line-height: 1.45">
+        <div style="font-weight: 700">{{r.name}}</div>
+        <div>{{r.what}}</div>
+        <div>{{r.dur}}</div>
+        <div>{{r.ease}}</div>
+        <div style="color: #3E4B58">{{r.rm}}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+    <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Result screen checked against your rules</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px">
+      <sc-for list="{{checks}}" as="ck" hint-placeholder-count="6">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-size: 19px; font-weight: 700">{{ck.rule}}</div>
+          <div style="font-size: 18px; line-height: 1.45; color: #3E4B58">{{ck.how}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const rows = [
+{ name: 'Result reveal: band', what: 'About 0.3 s after the screen appears, the band card and the Low, Borderline, Elevated scale fade in together: opacity 0 to 1. Nothing else moves. No scale, no slide.', dur: '1200 ms', ease: 'inOut(sin)', rm: 'Shown immediately, no fade.' },
+{ name: 'Result reveal: explanation', what: 'The "What this means" text fades in after the band has settled: opacity 0 to 1, starting 1400 ms after the band began.', dur: '800 ms', ease: 'inOut(sin)', rm: 'Shown immediately.' },
+{ name: 'Result reveal: next step', what: 'The "Your next step" card fades in last, starting 2400 ms after the band began. Total reveal takes about 3 seconds.', dur: '600 ms', ease: 'inOut(sin)', rm: 'Shown immediately.' },
+{ name: 'Always visible', what: 'The line "This is a screening, not a diagnosis." and the "Save a summary for my doctor" button are present from the first frame and never animate. No confetti, sound or haptic on any band.', dur: 'none', ease: 'none', rm: 'Same.' },
+{ name: 'Screen reader', what: 'When the screen appears, VoiceOver focus goes to the band card and reads "Your result: Borderline. We noticed some patterns..." in full, without waiting for the fade.', dur: 'none', ease: 'none', rm: 'Same.' },
+{ name: 'Home entry', what: 'On first load the screen fades in with the usual push: opacity 0 to 1, translateY 8 to 0.', dur: '300 ms', ease: 'out(cubic)', rm: 'Opacity only, 150 ms.' },
+{ name: 'First-time waveform (home)', what: 'The waveform picture in the empty state fades in once and then stays still.', dur: '400 ms', ease: 'out(cubic)', rm: 'Shown immediately.' },
+{ name: 'Tab change', what: 'The content cross-fades and the 4 pt underline under the tab label changes color. The underline does not slide.', dur: '150 ms', ease: 'linear', rm: 'Instant swap.' },
+{ name: 'Row and card press', what: 'The latest-result card and each earlier-check row dim slightly on press: opacity 1 to 0.85, back on release.', dur: '100 ms in, 160 ms out', ease: 'out(quad)', rm: 'Same, it is a color-only change.' },
+{ name: 'Start button', what: 'Press in: scale to 0.96. Release: back to 1. Then the normal push to the instruction screen.', dur: '100 ms in, 160 ms out', ease: 'out(quad)', rm: 'Opacity dips to 0.8 instead of scale.' }
+];
+const checks = [
+{ rule: 'No percentages', how: 'Nothing on the result or home screens shows a number, a score, a gauge or a chart. History shows only the band word and the date.' },
+{ rule: 'No verdict colors', how: 'Bands are light blue, amber and deep plum in light mode, steel blue, amber and lilac in dark mode. No red or green anywhere. The three differ in lightness in light mode.' },
+{ rule: 'Never color alone', how: 'Every band is a written word in a labeled box, the active one has a dark outline and a pointer, and the band word is also in the headline sentence. In dark mode amber and lilac are close in lightness, so the word, outline and pointer carry the meaning.' },
+{ rule: '"Not a diagnosis" line visible', how: 'Pinned above the save button on every result screen, in bold, and on home above the tab bar. It is outside the scrolling area, so it can never be pushed off screen.' },
+{ rule: 'A clear next step', how: 'Each band has its own "Your next step" card with one plain action, plus one primary button: "Save a summary for my doctor". Done is top right.' },
+{ rule: 'No false certainty', how: 'Wording says "patterns that are more common in ALS", never "you have". Elevated adds "This does not mean you have it." Low says a screening cannot rule anything out.' }
+];
+return { rows, checks };
+}
+}
+</script>
+</body>
+</html>

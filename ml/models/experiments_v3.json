@@ -1,0 +1,53 @@
+{
+  "n_configs_tried": 82,
+  "repeats": 3,
+  "nested_selection_auc_mean": 0.6783929257977701,
+  "nested_selection_auc_repeats": [
+    0.6849288735101885,
+    0.6947327950788158,
+    0.655517108804306
+  ],
+  "embedding_plain_cv_auc": {
+    "emb_wavlm_L3 | emb_logreg_C0.01": 0.7157503524285532,
+    "emb_wavlm_L6 | emb_logreg_C0.01": 0.7098551839036268,
+    "emb_wavlm_L6 | emb_logreg_C0.003": 0.6972318339100346,
+    "emb_wavlm_L3 | emb_logreg_C0.003": 0.6947327950788158,
+    "emb_wav2vec2_L9 | emb_logreg_C0.01": 0.6775599128540306,
+    "emb_wavlm_L6 | emb_logreg_C0.001": 0.6761501986415482,
+    "emb_wav2vec2_L9 | emb_logreg_C0.003": 0.6732666922978342,
+    "emb_wav2vec2_L3 | emb_logreg_C0.01": 0.6666666666666666,
+    "emb_wavlm_L3 | emb_logreg_C0.001": 0.665833653722927,
+    "emb_wav2vec2_L3 | emb_logreg_C0.003": 0.6607074202229911,
+    "emb_wavlm_L6 | emb_logreg_C0.0003": 0.6537229270793284,
+    "emb_wav2vec2_L9 | emb_logreg_C0.001": 0.6533384595668333,
+    "emb_wavlm_L9 | emb_logreg_C0.003": 0.6516083557606049,
+    "emb_wavlm_L9 | emb_logreg_C0.01": 0.650647186979367,
+    "emb_wav2vec2_L3 | emb_logreg_C0.001": 0.6473151352044085,
+    "emb_wavlm_L9 | emb_logreg_C0.001": 0.6436626938357043,
+    "emb_wavlm_L3 | emb_logreg_C0.0003": 0.6432782263232091,
+    "emb_wav2vec2_L6 | emb_logreg_C0.01": 0.6397539407920031,
+    "emb_wav2vec2_L9 | emb_logreg_C0.0003": 0.6386005382545176,
+    "emb_wavlm_L9 | emb_logreg_C0.0003": 0.6359733435858003,
+    "emb_wav2vec2_L3 | emb_logreg_C0.0003": 0.6334102268358324,
+    "emb_wav2vec2_L6 | emb_logreg_C0.003": 0.6302704088171217,
+    "emb_wavlm_L12 | emb_logreg_C0.01": 0.630078175060874,
+    "emb_wavlm_L12 | emb_logreg_C0.0003": 0.6271946687171601,
+    "emb_wav2vec2_L12 | emb_logreg_C0.01": 0.6257208765859286,
+    "emb_wav2vec2_L6 | emb_logreg_C0.001": 0.6251441753171857,
+    "emb_wavlm_L12 | emb_logreg_C0.003": 0.6234781494297065,
+    "emb_wavlm_L12 | emb_logreg_C0.001": 0.6229014481609637,
+    "emb_wav2vec2_L6 | emb_logreg_C0.0003": 0.6199538638985006,
+    "emb_wav2vec2_L12 | emb_logreg_C0.003": 0.6016275791362297,
+    "emb_wav2vec2_L12 | emb_logreg_C0.001": 0.5828527489427143,
+    "emb_wav2vec2_L12 | emb_logreg_C0.0003": 0.5784313725490197
+  },
+  "selected_config_counts": {
+    "emb_wavlm_L3 | emb_logreg_C0.01": 5,
+    "emb_wavlm_L6 | emb_logreg_C0.01": 3,
+    "pooled_clinical+mfcc_pooled | logreg_C0.1": 2,
+    "pooled_clinical+mfcc_pooled | logreg_C0.01": 2,
+    "emb_wav2vec2_L9 | emb_logreg_C0.003": 1,
+    "pooled_clinical+mfcc_pooled | rf_depth3": 1,
+    "emb_wavlm_L6 | emb_logreg_C0.003": 1
+  }
+}

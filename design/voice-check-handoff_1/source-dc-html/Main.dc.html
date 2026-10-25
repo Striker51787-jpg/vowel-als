@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Welcome</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #1F2D3A;outline-offset:3px}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 40px 24px 32px; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; align-items: center; gap: 12px">
+    <div style="width: 48px; height: 48px; border-radius: 50%; background: #2B5F75; display: flex; align-items: center; justify-content: center">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 14v0M9 9v10M14 5v18M19 9v10M24 14v0"/></svg>
+    </div>
+    <div style="font-size: 22px; font-weight: 700; letter-spacing: 0.2px">Voice Check</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 12px">
+    <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 42px; line-height: 1.12; text-wrap: balance">A short voice check, at your own pace.</h1>
+    <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #3E4B58">You will say a few simple sounds and phrases. It takes about 2 minutes.</p>
+  </div>
+
+  <div style="display: flex; gap: 12px">
+    <div style="flex: 1; background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 2px">
+      <div style="font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 500">8</div>
+      <div style="font-size: 18px; color: #3E4B58">short tasks</div>
+    </div>
+    <div style="flex: 1; background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 18px; padding: 16px; display: flex; flex-direction: column; gap: 2px">
+      <div style="font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 500">2 min</div>
+      <div style="font-size: 18px; color: #3E4B58">in total</div>
+    </div>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <div style="background: #E6EFF2; border-radius: 18px; padding: 16px 18px; font-size: 18px; line-height: 1.45; color: #1F2D3A">
+    This is a high-school research project. It is a screening prototype, not a medical test and not a diagnosis.
+  </div>
+
+  <a href="Before.dc.html" style="display: flex; align-items: center; justify-content: center; height: 64px; border-radius: 20px; background: #2B5F75; color: #FFFFFF; font-size: 23px; font-weight: 700; text-decoration: none">Begin</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

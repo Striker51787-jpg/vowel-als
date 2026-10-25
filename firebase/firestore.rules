@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Each signed-in user can read and write only their own test results.
+    // Audio is never stored; documents hold scores and measurements only.
+    match /users/{uid}/tests/{testId} {
+      allow read, delete: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid
+        && request.resource.data.band in ['low', 'borderline', 'elevated']
+        && request.resource.data.keys().hasOnly(
+             ['createdAt', 'band', 'modelScore', 'metrics', 'qualityWarnings', 'modelVersion', 'preScreen']);
+      allow update: if false;  // results are immutable once saved
+    }
+    match /users/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

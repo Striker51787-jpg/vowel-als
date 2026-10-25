@@ -1,0 +1,25 @@
+{
+  "n_configs_tried": 86,
+  "repeats": 3,
+  "fusion_plain_cv_auc": {
+    "fusion_clinical_C0.01": 0.6522491349480969,
+    "fusion_clinical_C0.1": 0.6666666666666666,
+    "fusion_clinical+mfcc_C0.01": 0.7014609765474816,
+    "fusion_clinical+mfcc_C0.1": 0.71600666410355
+  },
+  "nested_selection_auc_mean": 0.685761886453928,
+  "nested_selection_auc_repeats": [
+    0.6926182237600924,
+    0.6947327950788158,
+    0.6699346405228759
+  ],
+  "selected_config_counts": {
+    "emb_wavlm_L3 | emb_logreg_C0.01": 5,
+    "FUSION | fusion_clinical+mfcc_C0.1": 3,
+    "pooled_clinical+mfcc_pooled | logreg_C0.01": 2,
+    "emb_wavlm_L6 | emb_logreg_C0.01": 2,
+    "emb_wav2vec2_L9 | emb_logreg_C0.003": 1,
+    "pooled_clinical+mfcc_pooled | logreg_C0.1": 1,
+    "pooled_clinical+mfcc_pooled | rf_depth3": 1
+  }
+}

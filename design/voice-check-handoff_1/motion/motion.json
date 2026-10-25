@@ -1,0 +1,326 @@
+{
+  "note": "Easing names are Reanimated Easing; durations in ms",
+  "step2_recording": [
+    {
+      "name": "Screen entry (all screens)",
+      "what": "On navigation push, content fades in and rises slightly: opacity 0 to 1, translateY 8 to 0.",
+      "dur": "300 ms",
+      "ease": "out(cubic)",
+      "rm": "Opacity only, 150 ms, linear."
+    },
+    {
+      "name": "Record button halo (instruction)",
+      "what": "Loops while the screen is idle: a soft ring behind the button breathes, opacity 0.45 to 0.85 and scale 1 to 1.06. Stops once the button is pressed.",
+      "dur": "4000 ms per breath",
+      "ease": "inOut(sin), repeat, reverse",
+      "rm": "No loop. Static halo at opacity 0.7."
+    },
+    {
+      "name": "Button press",
+      "what": "Press in: the button scales to 0.96. Release: back to 1. Applies to every Pressable.",
+      "dur": "100 ms in, 160 ms out",
+      "ease": "out(quad)",
+      "rm": "Opacity dips to 0.8 instead of scale."
+    },
+    {
+      "name": "Start to countdown",
+      "what": "Tap Start. The instruction content cross-fades to the countdown: opacity 1 to 0, then the next screen 0 to 1.",
+      "dur": "250 ms",
+      "ease": "linear",
+      "rm": "Same fade, 150 ms."
+    },
+    {
+      "name": "Countdown ring (3-2-1 only)",
+      "what": "One shared progress value goes 0 to 1. Each of the 60 ticks changes from the primary color to the track color as progress passes it, clockwise from the top. This is the only countdown in the app.",
+      "dur": "3000 ms",
+      "ease": "linear",
+      "rm": "Ring stays full. Only the number changes."
+    },
+    {
+      "name": "Countdown number",
+      "what": "Each second the number changes (3, 2, 1), then \"Go\" holds briefly. The new number fades up: opacity 0.2 to 1, scale 0.9 to 1. The microphone opens about 0.5 s before \"Go\" with no visual change.",
+      "dur": "250 ms per number, \"Go\" held 700 ms",
+      "ease": "out(quad)",
+      "rm": "Number swaps instantly, no scale."
+    },
+    {
+      "name": "Countdown to recording",
+      "what": "After \"Go\" the ring fades out (opacity 1 to 0) while the waveform stage fades in. A single light haptic marks the start.",
+      "dur": "200 ms out, 300 ms in",
+      "ease": "out(cubic)",
+      "rm": "Same fade, 150 ms. Haptic stays."
+    },
+    {
+      "name": "Live waveform",
+      "what": "Audio metering arrives about 20 times a second and is normalised to 0 to 1. Every bar height follows that value, multiplied by a fixed center-weighted shape so the middle bars move most. Rising is quick, falling is slower, so it looks calm and never jittery. For syllable tasks the bars simply pulse with each \"pa\".",
+      "dur": "80 ms rise, 220 ms fall",
+      "ease": "out(quad)",
+      "rm": "Bars stay at a fixed height. A text line reads \"Voice level: good, low or high\" and changes at most once a second with a 150 ms fade."
+    },
+    {
+      "name": "Count-up timer",
+      "what": "Text only: shows 0.0 s counting up in tenths. No animation, no ring, no end point. Tabular numerals keep the digits steady.",
+      "dur": "Updates every 100 ms",
+      "ease": "none",
+      "rm": "Updates once a second, in whole seconds."
+    },
+    {
+      "name": "\"Keep going\" cue",
+      "what": "Vowels: \"Steady and easy. Keep going.\" until 5 s, then it cross-fades to \"Good. Stop whenever you are ready.\" Syllables: \"Fast and even. Keep going.\" If the voice level drops for 1 s the cue fades up. It breathes gently: opacity 0.7 to 1.",
+      "dur": "400 ms swap, 1800 ms breath",
+      "ease": "inOut(sin)",
+      "rm": "No breathing. Text swaps instantly."
+    },
+    {
+      "name": "Auto-stop (silence or 30 s cap)",
+      "what": "After 1.5 s of silence, or at the 30 s cap, the bars settle to their lowest height and the cue fades out. Then a short hold before the next screen. Nothing warns of the cap. Tapping Stop does the same.",
+      "dur": "400 ms settle, 600 ms hold",
+      "ease": "out(cubic)",
+      "rm": "Bars set to lowest height at once. Hold stays."
+    },
+    {
+      "name": "Coach card (quiet, loud, noisy, short)",
+      "what": "After the hold the card and its two illustration rows fade in and rise: opacity 0 to 1, translateY 12 to 0. The \"Your recording\" bars then grow up from their baseline, one after another, left to right. Buttons are visible from the start, so no one waits to continue.",
+      "dur": "350 ms card, 600 ms bars, 12 ms stagger",
+      "ease": "out(cubic)",
+      "rm": "Card fades in 200 ms. Bars appear at full height, no stagger."
+    },
+    {
+      "name": "Too short is a soft prompt",
+      "what": "First short try shows two equal buttons: \"Use this recording\" and \"Try again\". After the second short try the screen leads with \"Use this recording\" and \"Try once more\" is a text link. No timer, no auto-advance, nothing is blocked.",
+      "dur": "Same as coach card",
+      "ease": "out(cubic)",
+      "rm": "Same as coach card."
+    },
+    {
+      "name": "Record again",
+      "what": "One tap. Press feedback, cross-fade to a fresh 3-2-1 countdown. The task segment stays outlined.",
+      "dur": "250 ms fade",
+      "ease": "linear",
+      "rm": "150 ms fade."
+    },
+    {
+      "name": "Task accepted",
+      "what": "When a recording is accepted (passes the checks or \"Use this recording\") the current outlined segment fills solid, holds, then the next task’s instruction screen enters. A light success haptic plays. No check mark burst, no celebration.",
+      "dur": "400 ms fill, 300 ms hold, 300 ms enter",
+      "ease": "out(cubic)",
+      "rm": "Segment fills instantly, 150 ms fade."
+    }
+  ],
+  "step3_account_and_consent": [
+    {
+      "name": "Screen change",
+      "what": "On navigation push the new screen fades in and rises slightly: opacity 0 to 1, translateY 8 to 0. Going back reverses it.",
+      "dur": "300 ms",
+      "ease": "out(cubic)",
+      "rm": "Opacity only, 150 ms, linear."
+    },
+    {
+      "name": "Button press",
+      "what": "Press in: scale to 0.96. Release: back to 1. Applies to every Pressable.",
+      "dur": "100 ms in, 160 ms out",
+      "ease": "out(quad)",
+      "rm": "Opacity dips to 0.8 instead of scale."
+    },
+    {
+      "name": "Field focus",
+      "what": "When a field gains focus its border grows from 2 pt to 3 pt and its color changes from the border color to the focus color. The border width change is a layout shift of 1 pt, so animate the color and swap the width.",
+      "dur": "150 ms",
+      "ease": "out(quad)",
+      "rm": "Instant change."
+    },
+    {
+      "name": "Show or hide password",
+      "what": "Tap Show. The dots swap to the typed text and the button label swaps to \"Hide\". The text cross-fades.",
+      "dur": "100 ms",
+      "ease": "linear",
+      "rm": "Instant swap."
+    },
+    {
+      "name": "Login error appears",
+      "what": "After a failed log in, the message box grows from height 0 to its measured height while fading in: height 0 to auto, opacity 0 to 1. The password border moves to 3 pt in the primary text color. Focus moves to the message so VoiceOver reads it. No shake, no red.",
+      "dur": "250 ms",
+      "ease": "out(cubic)",
+      "rm": "Message appears at once. Border change is instant."
+    },
+    {
+      "name": "Error clears",
+      "what": "When the person edits either field the message collapses: height auto to 0, opacity 1 to 0.",
+      "dur": "200 ms",
+      "ease": "out(quad)",
+      "rm": "Disappears at once."
+    },
+    {
+      "name": "Checkbox",
+      "what": "Tap to check: the box fills with the primary color and the check mark scales 0.6 to 1 while fading in. Unchecking reverses it.",
+      "dur": "160 ms",
+      "ease": "out(quad)",
+      "rm": "Instant swap, no scale."
+    },
+    {
+      "name": "Continue button enables",
+      "what": "On the consent screen, once both boxes are checked the grey disabled button cross-fades to the primary button (two stacked layers, opacity 0 to 1). Text color changes with it.",
+      "dur": "200 ms",
+      "ease": "linear",
+      "rm": "Instant swap."
+    },
+    {
+      "name": "Welcome waveform",
+      "what": "Plays once when the screen first appears: each of the 27 bars grows from scaleY 0.4 to 1 while fading in, starting at the center bar and moving outward. Then it stays perfectly still. It is a picture of what the app listens to, not a loop.",
+      "dur": "600 ms total, 10 ms stagger",
+      "ease": "out(cubic)",
+      "rm": "Bars appear with a 200 ms fade, no stagger or scale."
+    },
+    {
+      "name": "Reset link sent",
+      "what": "The check circle fades in and scales 0.9 to 1, then the heading and text fade in after it.",
+      "dur": "300 ms circle, 200 ms text, 100 ms gap",
+      "ease": "out(cubic)",
+      "rm": "All fade in together, 150 ms."
+    },
+    {
+      "name": "Keyboard opens",
+      "what": "The flexible empty space above the primary button shrinks so the button stays above the keyboard. The content area scrolls the focused field into view.",
+      "dur": "Match keyboard, about 250 ms",
+      "ease": "iOS keyboard curve (KeyboardAvoidingView)",
+      "rm": "Same. This follows the keyboard, not a decorative animation."
+    }
+  ],
+  "step4_result_and_home": [
+    {
+      "name": "Result reveal: band",
+      "what": "About 0.3 s after the screen appears, the band card and the Low, Borderline, Elevated scale fade in together: opacity 0 to 1. Nothing else moves. No scale, no slide.",
+      "dur": "1200 ms",
+      "ease": "inOut(sin)",
+      "rm": "Shown immediately, no fade."
+    },
+    {
+      "name": "Result reveal: explanation",
+      "what": "The \"What this means\" text fades in after the band has settled: opacity 0 to 1, starting 1400 ms after the band began.",
+      "dur": "800 ms",
+      "ease": "inOut(sin)",
+      "rm": "Shown immediately."
+    },
+    {
+      "name": "Result reveal: next step",
+      "what": "The \"Your next step\" card fades in last, starting 2400 ms after the band began. Total reveal takes about 3 seconds.",
+      "dur": "600 ms",
+      "ease": "inOut(sin)",
+      "rm": "Shown immediately."
+    },
+    {
+      "name": "Always visible",
+      "what": "The line \"This is a screening, not a diagnosis.\" and the \"Save a summary for my doctor\" button are present from the first frame and never animate. No confetti, sound or haptic on any band.",
+      "dur": "none",
+      "ease": "none",
+      "rm": "Same."
+    },
+    {
+      "name": "Screen reader",
+      "what": "When the screen appears, VoiceOver focus goes to the band card and reads \"Your result: Borderline. We noticed some patterns...\" in full, without waiting for the fade.",
+      "dur": "none",
+      "ease": "none",
+      "rm": "Same."
+    },
+    {
+      "name": "Home entry",
+      "what": "On first load the screen fades in with the usual push: opacity 0 to 1, translateY 8 to 0.",
+      "dur": "300 ms",
+      "ease": "out(cubic)",
+      "rm": "Opacity only, 150 ms."
+    },
+    {
+      "name": "First-time waveform (home)",
+      "what": "The waveform picture in the empty state fades in once and then stays still.",
+      "dur": "400 ms",
+      "ease": "out(cubic)",
+      "rm": "Shown immediately."
+    },
+    {
+      "name": "Tab change",
+      "what": "The content cross-fades and the 4 pt underline under the tab label changes color. The underline does not slide.",
+      "dur": "150 ms",
+      "ease": "linear",
+      "rm": "Instant swap."
+    },
+    {
+      "name": "Row and card press",
+      "what": "The latest-result card and each earlier-check row dim slightly on press: opacity 1 to 0.85, back on release.",
+      "dur": "100 ms in, 160 ms out",
+      "ease": "out(quad)",
+      "rm": "Same, it is a color-only change."
+    },
+    {
+      "name": "Start button",
+      "what": "Press in: scale to 0.96. Release: back to 1. Then the normal push to the instruction screen.",
+      "dur": "100 ms in, 160 ms out",
+      "ease": "out(quad)",
+      "rm": "Opacity dips to 0.8 instead of scale."
+    }
+  ],
+  "step5_past_result_learn_settings_finish": [
+    {
+      "name": "Past result opens",
+      "what": "Opened from the Results list. The band, scale, meaning and next step are shown at once with no reveal, because the person has already seen it. The screen pushes in like any other: opacity 0 to 1, translateX 12 to 0.",
+      "dur": "250 ms",
+      "ease": "out(cubic)",
+      "rm": "Opacity only, 150 ms."
+    },
+    {
+      "name": "Results list row press",
+      "what": "The row dims on press: opacity 1 to 0.85, back on release. No other movement.",
+      "dur": "100 ms in, 160 ms out",
+      "ease": "out(quad)",
+      "rm": "Same, it is a color-only change."
+    },
+    {
+      "name": "Learn topic open",
+      "what": "Tapping a topic card pushes the article in: opacity 0 to 1, translateX 12 to 0. Cards dim on press like list rows.",
+      "dur": "250 ms",
+      "ease": "out(cubic)",
+      "rm": "Opacity only, 150 ms."
+    },
+    {
+      "name": "Appearance control",
+      "what": "Choosing iPhone, Light or Dark changes the selected fill color. The whole app cross-fades to the new theme once.",
+      "dur": "200 ms",
+      "ease": "linear",
+      "rm": "Instant swap."
+    },
+    {
+      "name": "Delete dialog",
+      "what": "The scrim fades from 0 to 55% black and the dialog fades in at the same time. No slide, no bounce. Focus moves to the dialog title. The safe button, Keep my recordings, is the primary one.",
+      "dur": "200 ms",
+      "ease": "out(quad)",
+      "rm": "Both appear instantly."
+    },
+    {
+      "name": "Delete dialog closes",
+      "what": "The scrim and dialog fade out together, then the list re-appears unchanged.",
+      "dur": "150 ms",
+      "ease": "linear",
+      "rm": "Instant."
+    },
+    {
+      "name": "Looking at your recordings",
+      "what": "The microphone circle has a soft halo that slowly grows and shrinks: scale 1 to 1.06 and back, opacity 1 to 0.7 and back. The eight segments stay filled. Nothing says how long it will take beyond \"a few seconds\".",
+      "dur": "2400 ms loop",
+      "ease": "inOut(sin)",
+      "rm": "Halo stays still. The text alone shows that it is working."
+    },
+    {
+      "name": "Ready, then result",
+      "what": "The check mark circle and text fade in once: opacity 0 to 1. Pressing See my result goes to the result screen and its slow reveal.",
+      "dur": "400 ms",
+      "ease": "out(cubic)",
+      "rm": "Shown immediately."
+    },
+    {
+      "name": "Save summary (PDF)",
+      "what": "The button label changes to \"Preparing…\" with no spinner, then the iPhone share sheet opens. The PDF page itself is a still document.",
+      "dur": "until ready",
+      "ease": "none",
+      "rm": "Same."
+    }
+  ]
+}

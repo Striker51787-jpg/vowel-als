@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: {{c.bg}}; color: {{c.text}}; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding-top: 59px; display: flex; flex-direction: column">
+
+  <div style="flex: 1; min-height: 0; overflow: hidden; padding: 8px 24px 0; display: flex; flex-direction: column; gap: 16px">
+    <div style="display: flex; flex-direction: column; gap: 4px">
+      <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 34px; line-height: 40px">Hello, Margaret.</h1>
+      <div style="font-size: 21px; line-height: 30px; color: {{c.text2}}">{{greeting}}</div>
+    </div>
+
+    <div style="background: {{c.surface}}; border: 1px solid {{c.border}}; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 22px; font-weight: 700">{{startTitle}}</div>
+      <div style="font-size: 19px; line-height: 27px; color: {{c.text2}}">{{startBody}}</div>
+      <button style="height: 64px; border-radius: 20px; border: none; background: {{c.primary}}; color: {{c.onPrimary}}; font-family: inherit; font-size: 22px; font-weight: 700">{{startButton}}</button>
+    </div>
+
+    <sc-if value="{{hasResults}}" hint-placeholder-val="{{ true }}">
+      <button style="text-align: left; background: {{c.surface}}; border: 1px solid {{c.border}}; border-radius: 24px; padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; color: {{c.text}}; font-family: inherit">
+        <div style="display: flex; align-items: center; justify-content: space-between; width: 100%">
+          <div style="font-size: 17px; font-weight: 700; color: {{c.text2}}">Your latest result</div>
+          <div style="font-size: 17px; color: {{c.text2}}">14 Oct</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="flex: none; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 26px; line-height: 26px; padding: 8px 16px 10px; border-radius: 14px; background: {{latest.bg}}; color: {{latest.ink}}">{{latest.name}}</div>
+          <div style="font-size: 18px; line-height: 25px">Some patterns were not clear.</div>
+        </div>
+        <div style="font-size: 19px; font-weight: 700; color: {{c.primaryText}}; text-decoration: underline">Read your result</div>
+      </button>
+
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 17px; font-weight: 700; color: {{c.text2}}; padding: 0 4px">Earlier checks</div>
+        <sc-for list="{{earlier}}" as="row" hint-placeholder-count="2">
+          <button style="display: flex; align-items: center; justify-content: space-between; min-height: 56px; padding: 0 4px; border: none; border-bottom: 1px solid {{c.border}}; background: transparent; color: {{c.text}}; font-family: inherit; font-size: 19px">
+            <span>{{row.date}}</span>
+            <span style="font-size: 18px; font-weight: 700; padding: 6px 14px; border-radius: 12px; background: {{row.bg}}; color: {{row.ink}}">{{row.name}}</span>
+          </button>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 5px; height: 96px" aria-hidden="true">
+        <sc-for list="{{bars}}" as="b" hint-placeholder-count="27">
+          <div style="width: 7px; height: {{b.h}}px; border-radius: 4px; background: {{c.primary}}"></div>
+        </sc-for>
+      </div>
+      <div style="font-size: 19px; line-height: 27px; color: {{c.text2}}; text-align: center">Your results will appear here after your first check.</div>
+    </sc-if>
+  </div>
+
+  <div style="padding: 0 24px 8px; font-size: 17px; line-height: 24px; color: {{c.text2}}; text-align: center">A screening, not a diagnosis.</div>
+
+  <div style="display: flex; border-top: 1px solid {{c.border}}; background: {{c.bg}}; padding: 0 8px 34px">
+    <sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4">
+      <button aria-current="{{tab.current}}" style="flex: 1; min-height: 56px; border: none; background: transparent; color: {{tab.color}}; font-family: inherit; font-size: 18px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 0">
+        <span>{{tab.label}}</span>
+        <div style="width: 28px; height: 4px; border-radius: 2px; background: {{tab.bar}}"></div>
+      </button>
+    </sc-for>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"screen":{"editor":"enum","default":"home","options":["home","empty"],"section":"Home"},"theme":{"editor":"enum","default":"light","options":["light","dark"],"section":"Home"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const screen = this.props.screen ?? 'home';
+const dark = (this.props.theme ?? 'light') === 'dark';
+const c = dark ? {
+bg: '#141B21', surface: '#1E2830', border: '#3A4853', text: '#F1EEE8', text2: '#BDC7CF',
+primary: '#8CC2D6', onPrimary: '#0E2530', primaryText: '#A9D4E3', soft: '#26404C'
+} : {
+bg: '#F8F4EC', surface: '#FFFFFF', border: '#DDD5C6', text: '#1F2D3A', text2: '#3E4B58',
+primary: '#2B5F75', onPrimary: '#FFFFFF', primaryText: '#1F4C60', soft: '#E6EFF2'
+};
+const bands = dark ? {
+low: { name: 'Low', bg: '#3A6477', ink: '#FFFFFF' },
+borderline: { name: 'Borderline', bg: '#E3B75F', ink: '#1A1405' },
+elevated: { name: 'Elevated', bg: '#CDB4E0', ink: '#1E1428' }
+} : {
+low: { name: 'Low', bg: '#D3E6EE', ink: '#1F2D3A' },
+borderline: { name: 'Borderline', bg: '#E9BC62', ink: '#1F2D3A' },
+elevated: { name: 'Elevated', bg: '#5A3D6E', ink: '#FFFFFF' }
+};
+const isEmpty = screen === 'empty';
+const earlier = [
+Object.assign({ date: '2 Sep 2026' }, bands.low),
+Object.assign({ date: '19 Aug 2026' }, bands.low)
+];
+const labels = ['Home', 'Results', 'Learn', 'Settings'];
+const tabs = labels.map((label, i) => ({
+label,
+current: i === 0 ? 'page' : 'false',
+color: i === 0 ? c.primaryText : c.text2,
+bar: i === 0 ? c.primary : 'transparent'
+}));
+const bars = Array.from({ length: 27 }, (_, i) => {
+const env = 0.3 + 0.7 * Math.exp(-Math.pow((i - 13) / 7, 2));
+const n = 0.6 + 0.4 * Math.sin(i * 1.3 + 1);
+return { h: Math.round(8 + env * n * 80) };
+});
+return {
+c, tabs, bars, earlier,
+isEmpty, hasResults: !isEmpty,
+greeting: isEmpty ? 'Welcome to Voice Check.' : 'Ready when you are.',
+startTitle: isEmpty ? 'Your first voice check' : 'Start a voice check',
+startBody: isEmpty
+? 'Eight short tasks, about 2 minutes. Find a quiet spot and hold the phone about 20 cm (8 in) from your mouth.'
+: 'Eight short tasks, about 2 minutes.',
+startButton: isEmpty ? 'Start your first check' : 'Start a voice check',
+latest: bands.borderline
+};
+}
+}
+</script>
+</body>
+</html>

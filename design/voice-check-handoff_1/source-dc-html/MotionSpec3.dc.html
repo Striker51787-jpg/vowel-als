@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Account and consent motion spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 64px 80px 80px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 960px">
+    <div style="font-size: 18px; color: #3E4B58; font-weight: 700; letter-spacing: 1px; text-transform: uppercase">Step 3 · Login, sign-up and consent · motion spec</div>
+    <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 48px; line-height: 1.12">Quiet screens. Motion only to say what just changed.</h1>
+    <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #3E4B58">Same rules as Step 2: opacity, scale, translate or height on plain View, Text and Pressable, built with Reanimated, and a Reduce Motion alternative for every row. Nothing shakes, bounces or celebrates. Errors never use red or a shake.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; border: 1px solid #DDD5C6; border-radius: 24px; background: #FFFFFF; overflow: hidden">
+    <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 16px 28px; background: #E6EFF2; font-size: 17px; font-weight: 700">
+      <div>Moment</div><div>Trigger and what moves</div><div>Duration</div><div>Easing</div><div>Reduce Motion</div>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="10">
+      <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 18px 28px; border-top: 1px solid #EFE9DC; font-size: 18px; line-height: 1.45">
+        <div style="font-weight: 700">{{r.name}}</div>
+        <div>{{r.what}}</div>
+        <div>{{r.dur}}</div>
+        <div>{{r.ease}}</div>
+        <div style="color: #3E4B58">{{r.rm}}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+    <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Build notes</h2>
+      <div style="font-size: 18px; line-height: 1.5">Inputs are TextInput with a visible label above (never placeholder-only). Mark email as textContentType emailAddress, keyboardType email-address, autoCapitalize none, and the password as textContentType password so iOS can offer saved passwords. Checkboxes are a Pressable with accessibilityRole checkbox and accessibilityState checked, since React Native has no built-in checkbox. The check mark is two rotated Views drawn with borders, so no icon library is needed. Wrap each form in KeyboardAvoidingView and ScrollView so the primary button stays reachable.</div>
+    </div>
+    <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Content decisions to confirm</h2>
+      <div style="font-size: 18px; line-height: 1.5">The "Your recordings" card on the consent screen is a placeholder: [DATA HANDLING: where recordings are stored, who can see them, and how to delete them]. I have not invented a privacy claim, so please supply the real text. "Check your email" does not confirm whether an account exists, which is standard practice. The not-a-diagnosis line appears on the welcome screen, on the sign-up consent checkbox, and again on the consent screen.</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+renderVals() {
+const rows = [
+{ name: 'Screen change', what: 'On navigation push the new screen fades in and rises slightly: opacity 0 to 1, translateY 8 to 0. Going back reverses it.', dur: '300 ms', ease: 'out(cubic)', rm: 'Opacity only, 150 ms, linear.' },
+{ name: 'Button press', what: 'Press in: scale to 0.96. Release: back to 1. Applies to every Pressable.', dur: '100 ms in, 160 ms out', ease: 'out(quad)', rm: 'Opacity dips to 0.8 instead of scale.' },
+{ name: 'Field focus', what: 'When a field gains focus its border grows from 2 pt to 3 pt and its color changes from the border color to the focus color. The border width change is a layout shift of 1 pt, so animate the color and swap the width.', dur: '150 ms', ease: 'out(quad)', rm: 'Instant change.' },
+{ name: 'Show or hide password', what: 'Tap Show. The dots swap to the typed text and the button label swaps to "Hide". The text cross-fades.', dur: '100 ms', ease: 'linear', rm: 'Instant swap.' },
+{ name: 'Login error appears', what: 'After a failed log in, the message box grows from height 0 to its measured height while fading in: height 0 to auto, opacity 0 to 1. The password border moves to 3 pt in the primary text color. Focus moves to the message so VoiceOver reads it. No shake, no red.', dur: '250 ms', ease: 'out(cubic)', rm: 'Message appears at once. Border change is instant.' },
+{ name: 'Error clears', what: 'When the person edits either field the message collapses: height auto to 0, opacity 1 to 0.', dur: '200 ms', ease: 'out(quad)', rm: 'Disappears at once.' },
+{ name: 'Checkbox', what: 'Tap to check: the box fills with the primary color and the check mark scales 0.6 to 1 while fading in. Unchecking reverses it.', dur: '160 ms', ease: 'out(quad)', rm: 'Instant swap, no scale.' },
+{ name: 'Continue button enables', what: 'On the consent screen, once both boxes are checked the grey disabled button cross-fades to the primary button (two stacked layers, opacity 0 to 1). Text color changes with it.', dur: '200 ms', ease: 'linear', rm: 'Instant swap.' },
+{ name: 'Welcome waveform', what: 'Plays once when the screen first appears: each of the 27 bars grows from scaleY 0.4 to 1 while fading in, starting at the center bar and moving outward. Then it stays perfectly still. It is a picture of what the app listens to, not a loop.', dur: '600 ms total, 10 ms stagger', ease: 'out(cubic)', rm: 'Bars appear with a 200 ms fade, no stagger or scale.' },
+{ name: 'Reset link sent', what: 'The check circle fades in and scales 0.9 to 1, then the heading and text fade in after it.', dur: '300 ms circle, 200 ms text, 100 ms gap', ease: 'out(cubic)', rm: 'All fade in together, 150 ms.' },
+{ name: 'Keyboard opens', what: 'The flexible empty space above the primary button shrinks so the button stays above the keyboard. The content area scrolls the focused field into view.', dur: 'Match keyboard, about 250 ms', ease: 'iOS keyboard curve (KeyboardAvoidingView)', rm: 'Same. This follows the keyboard, not a decorative animation.' }
+];
+return { rows };
+}
+}
+</script>
+</body>
+</html>

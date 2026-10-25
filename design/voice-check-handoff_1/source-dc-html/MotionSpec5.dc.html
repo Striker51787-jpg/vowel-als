@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Step 5 motion spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 64px 80px 80px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 960px">
+    <div style="font-size: 18px; color: #3E4B58; font-weight: 700; letter-spacing: 1px; text-transform: uppercase">Step 5 · Past result, PDF, Learn, settings, finish · motion spec and checks</div>
+    <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 48px; line-height: 1.12">Quiet screens stay quiet.</h1>
+    <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #3E4B58">Reading screens such as a past result, Learn and the PDF have no entrance animation at all. The few things that move do it briefly, with opacity or a color change, and each has a Reduce Motion alternative.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; border: 1px solid #DDD5C6; border-radius: 24px; background: #FFFFFF; overflow: hidden">
+    <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 16px 28px; background: #E6EFF2; font-size: 17px; font-weight: 700">
+      <div>Moment</div><div>Trigger and what moves</div><div>Duration</div><div>Easing</div><div>Reduce Motion</div>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="9">
+      <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 18px 28px; border-top: 1px solid #EFE9DC; font-size: 18px; line-height: 1.45">
+        <div style="font-weight: 700">{{r.name}}</div>
+        <div>{{r.what}}</div>
+        <div>{{r.dur}}</div>
+        <div>{{r.ease}}</div>
+        <div style="color: #3E4B58">{{r.rm}}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+    <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Past result and PDF checked against your rules</h2>
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 32px">
+      <sc-for list="{{checks}}" as="ck" hint-placeholder-count="6">
+        <div style="display: flex; flex-direction: column; gap: 4px">
+          <div style="font-size: 19px; font-weight: 700">{{ck.rule}}</div>
+          <div style="font-size: 18px; line-height: 1.45; color: #3E4B58">{{ck.how}}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2130}}'>
+class Component extends DCLogic {
+renderVals() {
+const rows = [
+{ name: 'Past result opens', what: 'Opened from the Results list. The band, scale, meaning and next step are shown at once with no reveal, because the person has already seen it. The screen pushes in like any other: opacity 0 to 1, translateX 12 to 0.', dur: '250 ms', ease: 'out(cubic)', rm: 'Opacity only, 150 ms.' },
+{ name: 'Results list row press', what: 'The row dims on press: opacity 1 to 0.85, back on release. No other movement.', dur: '100 ms in, 160 ms out', ease: 'out(quad)', rm: 'Same, it is a color-only change.' },
+{ name: 'Learn topic open', what: 'Tapping a topic card pushes the article in: opacity 0 to 1, translateX 12 to 0. Cards dim on press like list rows.', dur: '250 ms', ease: 'out(cubic)', rm: 'Opacity only, 150 ms.' },
+{ name: 'Appearance control', what: 'Choosing iPhone, Light or Dark changes the selected fill color. The whole app cross-fades to the new theme once.', dur: '200 ms', ease: 'linear', rm: 'Instant swap.' },
+{ name: 'Delete dialog', what: 'The scrim fades from 0 to 55% black and the dialog fades in at the same time. No slide, no bounce. Focus moves to the dialog title. The safe button, Keep my recordings, is the primary one.', dur: '200 ms', ease: 'out(quad)', rm: 'Both appear instantly.' },
+{ name: 'Delete dialog closes', what: 'The scrim and dialog fade out together, then the list re-appears unchanged.', dur: '150 ms', ease: 'linear', rm: 'Instant.' },
+{ name: 'Looking at your recordings', what: 'The microphone circle has a soft halo that slowly grows and shrinks: scale 1 to 1.06 and back, opacity 1 to 0.7 and back. The eight segments stay filled. Nothing says how long it will take beyond "a few seconds".', dur: '2400 ms loop', ease: 'inOut(sin)', rm: 'Halo stays still. The text alone shows that it is working.' },
+{ name: 'Ready, then result', what: 'The check mark circle and text fade in once: opacity 0 to 1. Pressing See my result goes to the result screen and its slow reveal.', dur: '400 ms', ease: 'out(cubic)', rm: 'Shown immediately.' },
+{ name: 'Save summary (PDF)', what: 'The button label changes to "Preparing…" with no spinner, then the iPhone share sheet opens. The PDF page itself is a still document.', dur: 'until ready', ease: 'none', rm: 'Same.' }
+];
+const checks = [
+{ rule: 'No percentages', how: 'The PDF and the past result show only the band word and the dates. The recordings table lists a task name and "long hold" or "one breath", never a score.' },
+{ rule: 'Reads in black and white', how: 'The PDF uses no color at all. The band is a word in a heavy-outlined box, the scale marks the current band with a thick outline, a grey fill and the words "this check".' },
+{ rule: '"Not a diagnosis" line visible', how: 'Bold at the foot of the PDF above the study note, on the past result above the save button, and above the tab bar on Results, Learn and Settings.' },
+{ rule: 'A clear next step', how: 'The PDF has a "Suggested next step" in plain words. The past result keeps its next-step card. The doctor notes box is ruled and left empty for writing.' },
+{ rule: 'Print safe', how: 'Fixed US Letter page, 816 by 1056 px. 72 px side margins and 56 px at the foot. Body text 16 px, smallest text 13 px. Nothing runs off the page. Swap to A4 (794 by 1123) by changing the page size only.' },
+{ rule: 'No red and no green', how: 'The delete dialog uses the same blue as every other button. The danger is explained in words and by putting the safe button first, not by color.' }
+];
+return { rows, checks };
+}
+}
+</script>
+</body>
+</html>

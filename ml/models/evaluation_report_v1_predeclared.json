@@ -1,0 +1,274 @@
+{
+  "model_version": "1.0.0",
+  "generated": "2026-10-21",
+  "dataset": {
+    "name": "VOC-ALS",
+    "doi": "10.1038/s41597-024-03597-2",
+    "n_participants": 153,
+    "n_als": 102,
+    "n_controls": 51
+  },
+  "split": {
+    "development": {
+      "n": 122,
+      "als": 81
+    },
+    "heldout": {
+      "n": 31,
+      "als": 21
+    },
+    "participant_overlap": 0
+  },
+  "method": {
+    "classifier": "L2 logistic regression, class-balanced",
+    "tuning": "inner 5-fold CV over C in logspace(-3, 1, 9)",
+    "headline": "outer 5-fold CV repeated 10x on the development set",
+    "primary_model": "primary_8task_clinical",
+    "seed": 42
+  },
+  "variants": {
+    "primary_8task_clinical": {
+      "n_features": 42,
+      "nested_cv_auc_mean": 0.6672086720867207,
+      "nested_cv_auc_repeat_range": [
+        0.643480879253237,
+        0.703101475459199
+      ],
+      "nested_cv_auc_95ci_bootstrap": [
+        0.5798362505677254,
+        0.783223009105362
+      ],
+      "heldout_auc": 0.5809523809523809,
+      "heldout_auc_95ci_bootstrap": [
+        0.37138198757763974,
+        0.7815126050420168
+      ],
+      "chosen_C": 0.0031622776601683794,
+      "heldout_at_0.5": {
+        "threshold": 0.5,
+        "tp": 8,
+        "fn": 13,
+        "tn": 7,
+        "fp": 3,
+        "sensitivity": 0.38095238095238093,
+        "specificity": 0.7
+      },
+      "bands": {
+        "low_max": 0.4308330890017832,
+        "elevated_min": 0.5335589348595009,
+        "rule": "Low < low_max <= Borderline < elevated_min <= Elevated",
+        "chosen_on": "development-set nested-CV out-of-fold scores"
+      },
+      "heldout_at_low_max": {
+        "threshold": 0.4308330890017832,
+        "tp": 15,
+        "fn": 6,
+        "tn": 3,
+        "fp": 7,
+        "sensitivity": 0.7142857142857143,
+        "specificity": 0.3
+      },
+      "heldout_at_elevated_min": {
+        "threshold": 0.5335589348595009,
+        "tp": 7,
+        "fn": 14,
+        "tn": 10,
+        "fp": 0,
+        "sensitivity": 0.3333333333333333,
+        "specificity": 1.0
+      },
+      "heldout_band_counts": {
+        "als": {
+          "low": 6,
+          "borderline": 8,
+          "elevated": 7
+        },
+        "controls": {
+          "low": 3,
+          "borderline": 7,
+          "elevated": 0
+        }
+      },
+      "heldout_brier": 0.2543529552048317,
+      "heldout_roc_curve": {
+        "fpr": [
+          0.0,
+          0.0,
+          0.0,
+          0.1,
+          0.1,
+          0.3,
+          0.3,
+          0.4,
+          0.4,
+          0.5,
+          0.5,
+          0.8,
+          0.8,
+          0.9,
+          0.9,
+          1.0,
+          1.0
+        ],
+        "tpr": [
+          0.0,
+          0.047619047619047616,
+          0.3333333333333333,
+          0.3333333333333333,
+          0.38095238095238093,
+          0.38095238095238093,
+          0.42857142857142855,
+          0.42857142857142855,
+          0.5238095238095238,
+          0.5238095238095238,
+          0.7142857142857143,
+          0.7142857142857143,
+          0.7619047619047619,
+          0.7619047619047619,
+          0.8571428571428571,
+          0.8571428571428571,
+          1.0
+        ]
+      },
+      "dev_oof_auc_by_sex": {
+        "male": 0.6952104499274312,
+        "female": 0.661904761904762
+      },
+      "dev_oof_score_age_correlation_controls": 0.2633713934444857,
+      "top_features": [
+        {
+          "feature": "phonationI__jitter_local",
+          "std_coef": 0.03689398070591344
+        },
+        {
+          "feature": "phonationA__f0_sd_st",
+          "std_coef": 0.03351264918032399
+        },
+        {
+          "feature": "rhythmPA__ddk_cv",
+          "std_coef": 0.03334821134340834
+        },
+        {
+          "feature": "rhythmKA__ddk_rate",
+          "std_coef": -0.03171161427582829
+        },
+        {
+          "feature": "rhythmKA__ddk_cv",
+          "std_coef": 0.03155225534411542
+        },
+        {
+          "feature": "rhythmKA__pause_ratio",
+          "std_coef": 0.03002108903498989
+        },
+        {
+          "feature": "phonationA__jitter_local",
+          "std_coef": 0.0282524050124638
+        },
+        {
+          "feature": "phonationE__duration",
+          "std_coef": -0.02787508714763442
+        },
+        {
+          "feature": "phonationA__duration",
+          "std_coef": -0.026889089582220718
+        },
+        {
+          "feature": "phonationE__jitter_local",
+          "std_coef": 0.02673652947113162
+        },
+        {
+          "feature": "phonationO__hnr",
+          "std_coef": -0.025655916284629265
+        },
+        {
+          "feature": "rhythmPA__ddk_rate",
+          "std_coef": -0.024920421116129285
+        },
+        {
+          "feature": "rhythmTA__ddk_cv",
+          "std_coef": 0.02394037346568372
+        },
+        {
+          "feature": "phonationE__hnr",
+          "std_coef": -0.023939224296435274
+        },
+        {
+          "feature": "phonationO__duration",
+          "std_coef": -0.023591515153530793
+        }
+      ]
+    },
+    "8task_clinical_plus_mfcc": {
+      "n_features": 250,
+      "nested_cv_auc_mean": 0.7011442336645588,
+      "nested_cv_auc_repeat_range": [
+        0.665161096055405,
+        0.7377295995182175
+      ],
+      "nested_cv_auc_95ci_bootstrap": [
+        0.6231816123188406,
+        0.7996751037075447
+      ],
+      "heldout_auc": 0.6523809523809523,
+      "heldout_auc_95ci_bootstrap": [
+        0.43434343434343436,
+        0.8696118012422357
+      ]
+    },
+    "single_vowel_A_clinical": {
+      "n_features": 6,
+      "nested_cv_auc_mean": 0.5941884974405299,
+      "nested_cv_auc_repeat_range": [
+        0.5639867509786209,
+        0.6193917494730503
+      ],
+      "nested_cv_auc_95ci_bootstrap": [
+        0.4883937220394129,
+        0.7005698621553884
+      ],
+      "heldout_auc": 0.47619047619047616,
+      "heldout_auc_95ci_bootstrap": [
+        0.25591720779220783,
+        0.7048095238095234
+      ]
+    },
+    "single_vowel_A_plus_mfcc": {
+      "n_features": 32,
+      "nested_cv_auc_mean": 0.6306534176452876,
+      "nested_cv_auc_repeat_range": [
+        0.5880758807588076,
+        0.6672688949111714
+      ],
+      "nested_cv_auc_95ci_bootstrap": [
+        0.5742393615923028,
+        0.7643022263880697
+      ],
+      "heldout_auc": 0.6428571428571429,
+      "heldout_auc_95ci_bootstrap": [
+        0.43449404761904764,
+        0.8315217391304348
+      ]
+    },
+    "age_sex_only_baseline": {
+      "n_features": 2,
+      "nested_cv_auc_mean": 0.3922463113520024,
+      "nested_cv_auc_repeat_range": [
+        0.2798855766335441,
+        0.42426979825353806
+      ],
+      "nested_cv_auc_95ci_bootstrap": [
+        0.27304898428329205,
+        0.47849893594838566
+      ],
+      "heldout_auc": 0.4619047619047619,
+      "heldout_auc_95ci_bootstrap": [
+        0.25411502100840333,
+        0.6800454545454543
+      ]
+    }
+  },
+  "environment": {
+    "python": "3.14.6",
+    "sklearn": "1.9.1"
+  }
+}

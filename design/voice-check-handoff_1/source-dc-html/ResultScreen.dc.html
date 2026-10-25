@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your result</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; overflow: hidden; background: {{c.bg}}; color: {{c.text}}; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding-top: 59px; display: flex; flex-direction: column">
+
+  <sc-if value="{{isPast}}" hint-placeholder-val="{{ false }}">
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 24px">
+      <button style="min-height: 48px; min-width: 64px; padding: 0; border: none; background: transparent; color: {{c.primaryText}}; font-family: inherit; font-size: 20px; font-weight: 700; text-align: left">Back</button>
+      <div style="font-size: 20px; font-weight: 700">Check of 14 Oct 2026</div>
+    </div>
+  </sc-if>
+  <sc-if value="{{isNew}}" hint-placeholder-val="{{ true }}">
+    <div style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding: 0 24px">
+      <div style="font-size: 20px; font-weight: 700">Your result, 21 Oct 2026</div>
+      <button style="min-height: 48px; min-width: 64px; padding: 0; border: none; background: transparent; color: {{c.primaryText}}; font-family: inherit; font-size: 20px; font-weight: 700; text-align: right">Done</button>
+    </div>
+  </sc-if>
+
+  <div style="flex: 1; min-height: 0; overflow: hidden; padding: 4px 24px 0; display: flex; flex-direction: column; gap: 12px">
+
+    <div style="display: flex; flex-direction: column; gap: 12px; opacity: {{bandOpacity}}">
+      <div style="background: {{c.surface}}; border: 1px solid {{c.border}}; border-radius: 24px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+        <div style="align-self: flex-start; font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 38px; line-height: 38px; padding: 10px 20px 12px; border-radius: 16px; background: {{bandBg}}; color: {{bandInk}}">{{bandName}}</div>
+        <div style="font-size: 21px; line-height: 30px; text-wrap: pretty">{{headline}}</div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px" aria-hidden="true">
+        <div style="display: flex; gap: 6px">
+          <sc-for list="{{cells}}" as="cell" hint-placeholder-count="3">
+            <div style="flex: 1; height: 16px; display: flex; align-items: flex-end; justify-content: center">
+              <sc-if value="{{cell.show}}" hint-placeholder-val="{{ false }}">
+                <div style="width: 0; height: 0; border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 12px solid {{c.text}}"></div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; gap: 6px">
+          <sc-for list="{{cells}}" as="cell" hint-placeholder-count="3">
+            <div style="flex: 1; height: 52px; box-sizing: border-box; border-radius: 14px; border: 3px solid {{cell.ring}}; background: {{cell.bg}}; color: {{cell.ink}}; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700">{{cell.name}}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 6px; opacity: {{meaningOpacity}}">
+      <div style="font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 24px; line-height: 28px">What this means</div>
+      <div style="font-size: 19px; line-height: 27px; color: {{c.text2}}; text-wrap: pretty">{{meaning}}</div>
+    </div>
+
+    <div style="background: {{c.soft}}; border-radius: 20px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; opacity: {{nextOpacity}}">
+      <div style="font-size: 20px; font-weight: 700">Your next step</div>
+      <div style="font-size: 19px; line-height: 27px; text-wrap: pretty">{{nextStep}}</div>
+    </div>
+  </div>
+
+  <div style="border-top: 1px solid {{c.border}}; background: {{c.bg}}; padding: 10px 24px 34px; display: flex; flex-direction: column; gap: 10px">
+    <div style="font-size: 18px; line-height: 24px; font-weight: 700; text-align: center">This is a screening, not a diagnosis.</div>
+    <button style="height: 64px; border-radius: 20px; border: none; background: {{c.primary}}; color: {{c.onPrimary}}; font-family: inherit; font-size: 22px; font-weight: 700">Save a summary for my doctor</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"band":{"editor":"enum","default":"borderline","options":["low","borderline","elevated"],"section":"Result"},"theme":{"editor":"enum","default":"light","options":["light","dark"],"section":"Result"},"live":{"editor":"boolean","default":true,"section":"Result"},"past":{"editor":"boolean","default":false,"section":"Result"},"reduceMotion":{"editor":"boolean","default":false,"section":"Result"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { tick: 0 };
+if (String(props.live) !== 'false' && !props.reduceMotion) this._t0 = Date.now();
+}
+componentDidMount() {
+if (String(this.props.live) !== 'false' && !this.props.reduceMotion) {
+this._timer = setInterval(() => this.setState({ tick: Date.now() % 1000000 }), 50);
+}
+}
+componentWillUnmount() {
+if (this._timer) clearInterval(this._timer);
+}
+renderVals() {
+const band = this.props.band ?? 'borderline';
+const dark = (this.props.theme ?? 'light') === 'dark';
+const c = dark ? {
+bg: '#141B21', surface: '#1E2830', border: '#3A4853', text: '#F1EEE8', text2: '#BDC7CF',
+primary: '#8CC2D6', onPrimary: '#0E2530', primaryText: '#A9D4E3', soft: '#26404C'
+} : {
+bg: '#F8F4EC', surface: '#FFFFFF', border: '#DDD5C6', text: '#1F2D3A', text2: '#3E4B58',
+primary: '#2B5F75', onPrimary: '#FFFFFF', primaryText: '#1F4C60', soft: '#E6EFF2'
+};
+const bands = dark ? {
+low: { name: 'Low', bg: '#3A6477', ink: '#FFFFFF' },
+borderline: { name: 'Borderline', bg: '#E3B75F', ink: '#1A1405' },
+elevated: { name: 'Elevated', bg: '#CDB4E0', ink: '#1E1428' }
+} : {
+low: { name: 'Low', bg: '#D3E6EE', ink: '#1F2D3A' },
+borderline: { name: 'Borderline', bg: '#E9BC62', ink: '#1F2D3A' },
+elevated: { name: 'Elevated', bg: '#5A3D6E', ink: '#FFFFFF' }
+};
+const copy = {
+low: {
+headline: 'We did not notice voice patterns that are more common in ALS.',
+meaning: 'Your recordings looked similar to most voices we compare against. This cannot rule anything out.',
+nextStep: 'No action is needed. If you notice changes in your speech or swallowing, tell your doctor.'
+},
+borderline: {
+headline: 'We noticed some patterns that can be more common in ALS, but they were not clear.',
+meaning: 'Some recordings looked typical and some a little different. This is common and often has an everyday cause.',
+nextStep: 'Try again another day in a quiet room. If you notice speech or swallowing changes, tell your doctor.'
+},
+elevated: {
+headline: 'We noticed voice patterns that are more common in ALS. This does not mean you have it.',
+meaning: 'Several recordings looked different from most voices we compare against. Many common things can cause this.',
+nextStep: 'Consider sharing this summary with your doctor. They can arrange proper testing if needed.'
+}
+};
+const order = ['low', 'borderline', 'elevated'];
+const cells = order.map((k) => ({
+name: bands[k].name, bg: bands[k].bg, ink: bands[k].ink, show: k === band,
+ring: k === band ? c.text : 'transparent'
+}));
+
+// slow, still reveal: band 0-1200 ms, meaning 1400-2200, next step 2400-3000. No movement, opacity only.
+const isPast = String(this.props.past) === 'true' || this.props.past === true;
+const live = String(this.props.live) !== 'false' && !this.props.reduceMotion && !isPast;
+let e = 99999;
+if (live && this._t0) e = (Date.now() - this._t0) % 9000;
+const fade = (start, dur) => {
+const x = Math.max(0, Math.min(1, (e - start) / dur));
+return x * x * (3 - 2 * x);
+};
+const b = bands[band] || bands.borderline;
+const cp = copy[band] || copy.borderline;
+return {
+c, cells, isPast, isNew: !isPast,
+bandName: b.name, bandBg: b.bg, bandInk: b.ink,
+headline: cp.headline, meaning: cp.meaning, nextStep: cp.nextStep,
+bandOpacity: fade(0, 1200),
+meaningOpacity: fade(1400, 800),
+nextOpacity: fade(2400, 600)
+};
+}
+}
+</script>
+</body>
+</html>

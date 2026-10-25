@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Before we start</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #1F2D3A;outline-offset:3px}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 16px 24px 32px; display: flex; flex-direction: column; gap: 24px">
+  <div style="display: flex; align-items: center; gap: 4px; margin-left: -8px">
+    <a href="Main.dc.html" aria-label="Back" style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: #1F2D3A; text-decoration: none">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4 7 13l9 9"/></svg>
+    </a>
+    <div style="font-size: 18px; color: #3E4B58">Step 1 of 2 before you record</div>
+  </div>
+
+  <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 36px; line-height: 1.15">Before we start</h1>
+
+  <div style="display: flex; flex-direction: column; gap: 14px">
+    <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 20px; padding: 18px">
+      <div style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E6EFF2; color: #1F4C60; font-weight: 700; font-size: 19px; display: flex; align-items: center; justify-content: center">1</div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 20px; font-weight: 700">What you will do</div>
+        <div style="font-size: 18px; line-height: 1.45; color: #3E4B58">Hold a sound, read a short phrase and repeat a few syllables out loud.</div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 20px; padding: 18px">
+      <div style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E6EFF2; color: #1F4C60; font-weight: 700; font-size: 19px; display: flex; align-items: center; justify-content: center">2</div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 20px; font-weight: 700">What you will see</div>
+        <div style="font-size: 18px; line-height: 1.45; color: #3E4B58">One word: Low, Borderline or Elevated. There is no score and no percentage.</div>
+      </div>
+    </div>
+    <div style="display: flex; gap: 16px; background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 20px; padding: 18px">
+      <div style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #E6EFF2; color: #1F4C60; font-weight: 700; font-size: 19px; display: flex; align-items: center; justify-content: center">3</div>
+      <div style="display: flex; flex-direction: column; gap: 4px">
+        <div style="font-size: 20px; font-weight: 700">What this is not</div>
+        <div style="font-size: 18px; line-height: 1.45; color: #3E4B58">It is not a diagnosis. Only a doctor can tell you about your health.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="flex: 1"></div>
+
+  <label for="agree" style="display: flex; align-items: flex-start; gap: 14px; font-size: 19px; line-height: 1.4; min-height: 48px">
+    <input id="agree" type="checkbox" style="flex: none; width: 28px; height: 28px; margin: 2px 0 0; accent-color: #2B5F75">
+    <span>I understand this is a research prototype and not a diagnosis.</span>
+  </label>
+
+  <a href="Setup.dc.html" style="display: flex; align-items: center; justify-content: center; height: 64px; border-radius: 20px; background: #2B5F75; color: #FFFFFF; font-size: 23px; font-weight: 700; text-decoration: none">Continue</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,734 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-10-21T12:00:00Z"
+ },
+ "title": "Voice Check",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "DesignSystem.dc.html": {
+   "x": 0,
+   "y": 1680,
+   "w": 1440,
+   "h": 3300,
+   "title": "Design system v1 (approved)"
+  },
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "Draft: 1 Welcome",
+   "radius": 28
+  },
+  "Before.dc.html": {
+   "x": 470,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "Draft: 2 Before we start",
+   "radius": 28
+  },
+  "Setup.dc.html": {
+   "x": 940,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "Draft: 3 Find a quiet spot",
+   "radius": 28
+  },
+  "Task.dc.html": {
+   "x": 1410,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "Draft: 4 Task (replaced by Step 2)",
+   "radius": 28,
+   "is_interactive": true
+  },
+  "Complete.dc.html": {
+   "x": 1880,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "Draft: 5 All done",
+   "radius": 28
+  },
+  "RecLight1.dc.html": {
+   "x": 0,
+   "y": 5200,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 1a Instruction, vowel (tasks 1-5)",
+   "radius": 28
+  },
+  "RecLightSyl.dc.html": {
+   "x": 470,
+   "y": 5200,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 1b Instruction, syllables (tasks 6-8)",
+   "radius": 28
+  },
+  "RecLight2.dc.html": {
+   "x": 940,
+   "y": 5200,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 2 Countdown 3-2-1-Go",
+   "radius": 28
+  },
+  "RecLight3.dc.html": {
+   "x": 1410,
+   "y": 5200,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 3 Recording, count-up (live)",
+   "radius": 28
+  },
+  "Rec.dc.html": {
+   "x": 1880,
+   "y": 5200,
+   "w": 390,
+   "h": 844,
+   "title": "Component: Tweaks for screen, theme, Reduce Motion",
+   "radius": 28
+  },
+  "RecLight4.dc.html": {
+   "x": 0,
+   "y": 6164,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 4 Too quiet",
+   "radius": 28
+  },
+  "RecLightLoud.dc.html": {
+   "x": 470,
+   "y": 6164,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 5 Too loud",
+   "radius": 28
+  },
+  "RecLight5.dc.html": {
+   "x": 940,
+   "y": 6164,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 6 Too noisy",
+   "radius": 28
+  },
+  "RecLight6.dc.html": {
+   "x": 1410,
+   "y": 6164,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 7 Too short (soft prompt)",
+   "radius": 28
+  },
+  "RecLightShort2.dc.html": {
+   "x": 1880,
+   "y": 6164,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 8 Too short, second try",
+   "radius": 28
+  },
+  "RecDark1.dc.html": {
+   "x": 0,
+   "y": 7128,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 1a Instruction, vowel",
+   "radius": 28
+  },
+  "RecDarkSyl.dc.html": {
+   "x": 470,
+   "y": 7128,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 1b Instruction, syllables",
+   "radius": 28
+  },
+  "RecDark2.dc.html": {
+   "x": 940,
+   "y": 7128,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 2 Countdown 3-2-1-Go",
+   "radius": 28
+  },
+  "RecDark3.dc.html": {
+   "x": 1410,
+   "y": 7128,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 3 Recording, count-up (live)",
+   "radius": 28
+  },
+  "RecDark4.dc.html": {
+   "x": 0,
+   "y": 8092,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 4 Too quiet",
+   "radius": 28
+  },
+  "RecDarkLoud.dc.html": {
+   "x": 470,
+   "y": 8092,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 5 Too loud",
+   "radius": 28
+  },
+  "RecDark5.dc.html": {
+   "x": 940,
+   "y": 8092,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 6 Too noisy",
+   "radius": 28
+  },
+  "RecDark6.dc.html": {
+   "x": 1410,
+   "y": 8092,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 7 Too short (soft prompt)",
+   "radius": 28
+  },
+  "RecDarkShort2.dc.html": {
+   "x": 1880,
+   "y": 8092,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 8 Too short, second try",
+   "radius": 28
+  },
+  "MotionSpec.dc.html": {
+   "x": 0,
+   "y": 9056,
+   "w": 1440,
+   "h": 2500,
+   "title": "Step 2 motion spec"
+  },
+  "AuthL1.dc.html": {
+   "x": 0,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 1 Log in",
+   "radius": 28
+  },
+  "AuthL2.dc.html": {
+   "x": 470,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 2 Log in, wrong password",
+   "radius": 28
+  },
+  "AuthL3.dc.html": {
+   "x": 940,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 3 Sign up with consent",
+   "radius": 28
+  },
+  "AuthL4.dc.html": {
+   "x": 1410,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 4 Forgot password",
+   "radius": 28
+  },
+  "AuthL5.dc.html": {
+   "x": 1880,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 5 Check your email",
+   "radius": 28
+  },
+  "AuthL6.dc.html": {
+   "x": 2350,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 6 Welcome",
+   "radius": 28
+  },
+  "AuthL7.dc.html": {
+   "x": 2820,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 7 Consent",
+   "radius": 28
+  },
+  "AuthL8.dc.html": {
+   "x": 3290,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 8 Allow microphone",
+   "radius": 28
+  },
+  "Auth.dc.html": {
+   "x": 3760,
+   "y": 12000,
+   "w": 390,
+   "h": 844,
+   "title": "Component: Tweaks for screen and theme",
+   "radius": 28
+  },
+  "AuthD1.dc.html": {
+   "x": 0,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 1 Log in",
+   "radius": 28
+  },
+  "AuthD2.dc.html": {
+   "x": 470,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 2 Log in, wrong password",
+   "radius": 28
+  },
+  "AuthD3.dc.html": {
+   "x": 940,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 3 Sign up with consent",
+   "radius": 28
+  },
+  "AuthD4.dc.html": {
+   "x": 1410,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 4 Forgot password",
+   "radius": 28
+  },
+  "AuthD5.dc.html": {
+   "x": 1880,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 5 Check your email",
+   "radius": 28
+  },
+  "AuthD6.dc.html": {
+   "x": 2350,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 6 Welcome",
+   "radius": 28
+  },
+  "AuthD7.dc.html": {
+   "x": 2820,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 7 Consent",
+   "radius": 28
+  },
+  "AuthD8.dc.html": {
+   "x": 3290,
+   "y": 12964,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 8 Allow microphone",
+   "radius": 28
+  },
+  "MotionSpec3.dc.html": {
+   "x": 0,
+   "y": 13928,
+   "w": 1440,
+   "h": 1900,
+   "title": "Step 3 motion spec"
+  },
+  "ResL1.dc.html": {
+   "x": 0,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 1 Result: Low",
+   "radius": 28
+  },
+  "ResL2.dc.html": {
+   "x": 470,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 2 Result: Borderline",
+   "radius": 28
+  },
+  "ResL3.dc.html": {
+   "x": 940,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 3 Result: Elevated",
+   "radius": 28
+  },
+  "ResultScreen.dc.html": {
+   "x": 1410,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Component: Tweaks for band, theme, live reveal, Reduce Motion",
+   "radius": 28
+  },
+  "HomeL1.dc.html": {
+   "x": 1880,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 4 Home",
+   "radius": 28
+  },
+  "HomeL2.dc.html": {
+   "x": 2350,
+   "y": 15988,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 5 Home, first time",
+   "radius": 28
+  },
+  "ResD1.dc.html": {
+   "x": 0,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 1 Result: Low",
+   "radius": 28
+  },
+  "ResD2.dc.html": {
+   "x": 470,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 2 Result: Borderline",
+   "radius": 28
+  },
+  "ResD3.dc.html": {
+   "x": 940,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 3 Result: Elevated",
+   "radius": 28
+  },
+  "Home.dc.html": {
+   "x": 1410,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Component: Tweaks for screen and theme",
+   "radius": 28
+  },
+  "HomeD1.dc.html": {
+   "x": 1880,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 4 Home",
+   "radius": 28
+  },
+  "HomeD2.dc.html": {
+   "x": 2350,
+   "y": 16952,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 5 Home, first time",
+   "radius": 28
+  },
+  "MotionSpec4.dc.html": {
+   "x": 0,
+   "y": 17916,
+   "w": 1440,
+   "h": 1900,
+   "title": "Step 4 motion spec and result checks"
+  },
+  "S5L1.dc.html": {
+   "x": 0,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 1 Results list",
+   "radius": 28
+  },
+  "S5D1.dc.html": {
+   "x": 0,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 1 Results list",
+   "radius": 28
+  },
+  "S5L2.dc.html": {
+   "x": 470,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 2 Learn",
+   "radius": 28
+  },
+  "S5D2.dc.html": {
+   "x": 470,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 2 Learn",
+   "radius": 28
+  },
+  "S5L3.dc.html": {
+   "x": 940,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 3 Settings",
+   "radius": 28
+  },
+  "S5D3.dc.html": {
+   "x": 940,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 3 Settings",
+   "radius": 28
+  },
+  "S5L4.dc.html": {
+   "x": 1410,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 4 Privacy and data",
+   "radius": 28
+  },
+  "S5D4.dc.html": {
+   "x": 1410,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 4 Privacy and data",
+   "radius": 28
+  },
+  "S5L5.dc.html": {
+   "x": 1880,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 5 Delete confirmation",
+   "radius": 28
+  },
+  "S5D5.dc.html": {
+   "x": 1880,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 5 Delete confirmation",
+   "radius": 28
+  },
+  "S5L6.dc.html": {
+   "x": 2350,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 6 Looking at your recordings",
+   "radius": 28
+  },
+  "S5D6.dc.html": {
+   "x": 2350,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 6 Looking at your recordings",
+   "radius": 28
+  },
+  "S5L7.dc.html": {
+   "x": 2820,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 7 All done",
+   "radius": 28
+  },
+  "S5D7.dc.html": {
+   "x": 2820,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 7 All done",
+   "radius": 28
+  },
+  "PastL.dc.html": {
+   "x": 3290,
+   "y": 19976,
+   "w": 390,
+   "h": 844,
+   "title": "Light \u00b7 8 Past result",
+   "radius": 28
+  },
+  "PastD.dc.html": {
+   "x": 3290,
+   "y": 20940,
+   "w": 390,
+   "h": 844,
+   "title": "Dark \u00b7 8 Past result",
+   "radius": 28
+  },
+  "Screens5.dc.html": {
+   "x": 2500,
+   "y": 21964,
+   "w": 390,
+   "h": 844,
+   "title": "Step 5 component",
+   "radius": 28
+  },
+  "PdfReport.dc.html": {
+   "x": 0,
+   "y": 21964,
+   "w": 816,
+   "h": 1056,
+   "title": "PDF summary for my doctor (Letter, print)",
+   "radius": 0
+  },
+  "MotionSpec5.dc.html": {
+   "x": 900,
+   "y": 21964,
+   "w": 1440,
+   "h": 2130,
+   "title": "Step 5 motion spec and checks"
+  }
+ },
+ "order": [
+  "DesignSystem.dc.html",
+  "Main.dc.html",
+  "Before.dc.html",
+  "Setup.dc.html",
+  "Task.dc.html",
+  "Complete.dc.html",
+  "RecLight1.dc.html",
+  "RecLightSyl.dc.html",
+  "RecLight2.dc.html",
+  "RecLight3.dc.html",
+  "Rec.dc.html",
+  "RecLight4.dc.html",
+  "RecLightLoud.dc.html",
+  "RecLight5.dc.html",
+  "RecLight6.dc.html",
+  "RecLightShort2.dc.html",
+  "RecDark1.dc.html",
+  "RecDarkSyl.dc.html",
+  "RecDark2.dc.html",
+  "RecDark3.dc.html",
+  "RecDark4.dc.html",
+  "RecDarkLoud.dc.html",
+  "RecDark5.dc.html",
+  "RecDark6.dc.html",
+  "RecDarkShort2.dc.html",
+  "MotionSpec.dc.html",
+  "AuthL1.dc.html",
+  "AuthL2.dc.html",
+  "AuthL3.dc.html",
+  "AuthL4.dc.html",
+  "AuthL5.dc.html",
+  "AuthL6.dc.html",
+  "AuthL7.dc.html",
+  "AuthL8.dc.html",
+  "Auth.dc.html",
+  "AuthD1.dc.html",
+  "AuthD2.dc.html",
+  "AuthD3.dc.html",
+  "AuthD4.dc.html",
+  "AuthD5.dc.html",
+  "AuthD6.dc.html",
+  "AuthD7.dc.html",
+  "AuthD8.dc.html",
+  "MotionSpec3.dc.html",
+  "ResL1.dc.html",
+  "ResL2.dc.html",
+  "ResL3.dc.html",
+  "ResultScreen.dc.html",
+  "HomeL1.dc.html",
+  "HomeL2.dc.html",
+  "ResD1.dc.html",
+  "ResD2.dc.html",
+  "ResD3.dc.html",
+  "Home.dc.html",
+  "HomeD1.dc.html",
+  "HomeD2.dc.html",
+  "MotionSpec4.dc.html",
+  "S5L1.dc.html",
+  "S5D1.dc.html",
+  "S5L2.dc.html",
+  "S5D2.dc.html",
+  "S5L3.dc.html",
+  "S5D3.dc.html",
+  "S5L4.dc.html",
+  "S5D4.dc.html",
+  "S5L5.dc.html",
+  "S5D5.dc.html",
+  "S5L6.dc.html",
+  "S5D6.dc.html",
+  "S5L7.dc.html",
+  "S5D7.dc.html",
+  "PastL.dc.html",
+  "PastD.dc.html",
+  "Screens5.dc.html",
+  "PdfReport.dc.html",
+  "MotionSpec5.dc.html"
+ ],
+ "notes": {
+  "t1": {
+   "x": 0,
+   "y": -260,
+   "text": "Early drafts (to be rebuilt after Step 4)",
+   "kind": "title1",
+   "maxW": 2740
+  },
+  "t2": {
+   "x": 0,
+   "y": 4900,
+   "text": "Step 2: Recording flow, light and dark (top rows: flow, then coach states; dark below)",
+   "kind": "title1",
+   "maxW": 2270
+  },
+  "t3": {
+   "x": 0,
+   "y": 11740,
+   "text": "Step 3: Log in, sign up, forgot password, welcome and consent (light, then dark)",
+   "kind": "title1",
+   "maxW": 3680
+  },
+  "t4": {
+   "x": 0,
+   "y": 15700,
+   "text": "Step 4: Result and home (light, then dark)",
+   "kind": "title1",
+   "maxW": 2740
+  },
+  "t5": {
+   "x": 0,
+   "y": 19676,
+   "text": "Step 5: Results list, Learn, settings, privacy and delete, finishing screens, past result and the PDF summary (light, then dark)",
+   "kind": "title1",
+   "maxW": 3760
+  }
+ },
+ "designSystems": []
+}

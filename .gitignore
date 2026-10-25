@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Dataset: VOC-ALS is distributed through Synapse under its terms of use; do not re-publish it.
+ml/data/
+
+# Secrets
+.env
+*.serviceAccount.json
+service-account*.json
+.synapseConfig
+
+# Expo / Node
+node_modules/
+.expo/
+dist/
+
+# Local-only files
+deploy/
+*.log
+.DS_Store
+.venv/
+**/__pycache__/
+.pytest_cache/
+app/.expo/
+app/dist/

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Recording flow motion spec</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:wght@500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; box-sizing: border-box; background: #F8F4EC; color: #1F2D3A; font-family: 'Atkinson Hyperlegible', system-ui, sans-serif; padding: 64px 80px 80px; display: flex; flex-direction: column; gap: 40px">
+
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 960px">
+    <div style="font-size: 18px; color: #3E4B58; font-weight: 700; letter-spacing: 1px; text-transform: uppercase">Step 2 · Recording flow · motion spec</div>
+    <h1 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 48px; line-height: 1.12">Motion that helps you speak, then gets out of the way.</h1>
+    <p style="margin: 0; font-size: 21px; line-height: 1.5; color: #3E4B58">Everything uses opacity, scale, translate or height on plain View and Text, so it maps to Reanimated shared values with no Lottie or video. Easing names are Reanimated's: out(cubic) decelerates, inOut(sin) is a slow breath, linear is for time that really is linear. The recording has no fixed length, so nothing on screen counts down to an end. Only the 3-2-1 before recording counts down.</p>
+  </div>
+
+  <div style="display: flex; flex-direction: column; border: 1px solid #DDD5C6; border-radius: 24px; background: #FFFFFF; overflow: hidden">
+    <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 16px 28px; background: #E6EFF2; font-size: 17px; font-weight: 700">
+      <div>Moment</div><div>Trigger and what moves</div><div>Duration</div><div>Easing</div><div>Reduce Motion</div>
+    </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="14">
+      <div style="display: grid; grid-template-columns: 220px minmax(0, 1.5fr) 150px 190px minmax(0, 1fr); gap: 24px; padding: 18px 28px; border-top: 1px solid #EFE9DC; font-size: 18px; line-height: 1.45">
+        <div style="font-weight: 700">{{r.name}}</div>
+        <div>{{r.what}}</div>
+        <div>{{r.dur}}</div>
+        <div>{{r.ease}}</div>
+        <div style="color: #3E4B58">{{r.rm}}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+    <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Recording rules the screens follow</h2>
+      <div style="font-size: 18px; line-height: 1.5">Tasks 1 to 5 are sustained vowels (ah, eh, ee, oh, oo). Tasks 6 to 8 are syllable repeats (pa, ta, ka). Every recording uses a count-up timer. It stops by itself after 1.5 s of silence, or at a hard cap of 30 s, with no countdown or warning shown. Recording begins about 0.5 s before "Go" so the room noise can be measured; nothing visual changes at that point.</div>
+    </div>
+    <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+      <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Coach checks (placeholders to calibrate)</h2>
+      <div style="font-size: 18px; line-height: 1.5">Too quiet: loudest point below about -34 dBFS. Too loud: more than 0.1% of samples at maximum. Too noisy: speech less than 15 dB above room noise. Too short: less than 3 s of sound, which is a soft prompt only. After two short tries the screen leads with "Use this recording". The coach never comments on health, and every state offers a way to continue.</div>
+    </div>
+  </div>
+
+  <div style="background: #FFFFFF; border: 1px solid #DDD5C6; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+    <h2 style="margin: 0; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 28px">Build notes</h2>
+    <div style="font-size: 18px; line-height: 1.5">Layout uses View, Text and Pressable only. The countdown ring is 60 small absolutely positioned Views rotated around the ring center (no SVG library). Waveform bars are 27 Views driven by one shared loudness value. Use tabular numerals (fontVariant: tabular-nums) on the timer so digits do not jitter. Read Reduce Motion with Reanimated's useReducedMotion and re-check it when the setting changes.</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() {
+const rows = [
+{ name: 'Screen entry (all screens)', what: 'On navigation push, content fades in and rises slightly: opacity 0 to 1, translateY 8 to 0.', dur: '300 ms', ease: 'out(cubic)', rm: 'Opacity only, 150 ms, linear.' },
+{ name: 'Record button halo (instruction)', what: 'Loops while the screen is idle: a soft ring behind the button breathes, opacity 0.45 to 0.85 and scale 1 to 1.06. Stops once the button is pressed.', dur: '4000 ms per breath', ease: 'inOut(sin), repeat, reverse', rm: 'No loop. Static halo at opacity 0.7.' },
+{ name: 'Button press', what: 'Press in: the button scales to 0.96. Release: back to 1. Applies to every Pressable.', dur: '100 ms in, 160 ms out', ease: 'out(quad)', rm: 'Opacity dips to 0.8 instead of scale.' },
+{ name: 'Start to countdown', what: 'Tap Start. The instruction content cross-fades to the countdown: opacity 1 to 0, then the next screen 0 to 1.', dur: '250 ms', ease: 'linear', rm: 'Same fade, 150 ms.' },
+{ name: 'Countdown ring (3-2-1 only)', what: 'One shared progress value goes 0 to 1. Each of the 60 ticks changes from the primary color to the track color as progress passes it, clockwise from the top. This is the only countdown in the app.', dur: '3000 ms', ease: 'linear', rm: 'Ring stays full. Only the number changes.' },
+{ name: 'Countdown number', what: 'Each second the number changes (3, 2, 1), then "Go" holds briefly. The new number fades up: opacity 0.2 to 1, scale 0.9 to 1. The microphone opens about 0.5 s before "Go" with no visual change.', dur: '250 ms per number, "Go" held 700 ms', ease: 'out(quad)', rm: 'Number swaps instantly, no scale.' },
+{ name: 'Countdown to recording', what: 'After "Go" the ring fades out (opacity 1 to 0) while the waveform stage fades in. A single light haptic marks the start.', dur: '200 ms out, 300 ms in', ease: 'out(cubic)', rm: 'Same fade, 150 ms. Haptic stays.' },
+{ name: 'Live waveform', what: 'Audio metering arrives about 20 times a second and is normalised to 0 to 1. Every bar height follows that value, multiplied by a fixed center-weighted shape so the middle bars move most. Rising is quick, falling is slower, so it looks calm and never jittery. For syllable tasks the bars simply pulse with each "pa".', dur: '80 ms rise, 220 ms fall', ease: 'out(quad)', rm: 'Bars stay at a fixed height. A text line reads "Voice level: good, low or high" and changes at most once a second with a 150 ms fade.' },
+{ name: 'Count-up timer', what: 'Text only: shows 0.0 s counting up in tenths. No animation, no ring, no end point. Tabular numerals keep the digits steady.', dur: 'Updates every 100 ms', ease: 'none', rm: 'Updates once a second, in whole seconds.' },
+{ name: '"Keep going" cue', what: 'Vowels: "Steady and easy. Keep going." until 5 s, then it cross-fades to "Good. Stop whenever you are ready." Syllables: "Fast and even. Keep going." If the voice level drops for 1 s the cue fades up. It breathes gently: opacity 0.7 to 1.', dur: '400 ms swap, 1800 ms breath', ease: 'inOut(sin)', rm: 'No breathing. Text swaps instantly.' },
+{ name: 'Auto-stop (silence or 30 s cap)', what: 'After 1.5 s of silence, or at the 30 s cap, the bars settle to their lowest height and the cue fades out. Then a short hold before the next screen. Nothing warns of the cap. Tapping Stop does the same.', dur: '400 ms settle, 600 ms hold', ease: 'out(cubic)', rm: 'Bars set to lowest height at once. Hold stays.' },
+{ name: 'Coach card (quiet, loud, noisy, short)', what: 'After the hold the card and its two illustration rows fade in and rise: opacity 0 to 1, translateY 12 to 0. The "Your recording" bars then grow up from their baseline, one after another, left to right. Buttons are visible from the start, so no one waits to continue.', dur: '350 ms card, 600 ms bars, 12 ms stagger', ease: 'out(cubic)', rm: 'Card fades in 200 ms. Bars appear at full height, no stagger.' },
+{ name: 'Too short is a soft prompt', what: 'First short try shows two equal buttons: "Use this recording" and "Try again". After the second short try the screen leads with "Use this recording" and "Try once more" is a text link. No timer, no auto-advance, nothing is blocked.', dur: 'Same as coach card', ease: 'out(cubic)', rm: 'Same as coach card.' },
+{ name: 'Record again', what: 'One tap. Press feedback, cross-fade to a fresh 3-2-1 countdown. The task segment stays outlined.', dur: '250 ms fade', ease: 'linear', rm: '150 ms fade.' },
+{ name: 'Task accepted', what: 'When a recording is accepted (passes the checks or "Use this recording") the current outlined segment fills solid, holds, then the next task’s instruction screen enters. A light success haptic plays. No check mark burst, no celebration.', dur: '400 ms fill, 300 ms hold, 300 ms enter', ease: 'out(cubic)', rm: 'Segment fills instantly, 150 ms fade.' }
+];
+return { rows };
+}
+}
+</script>
+</body>
+</html>
