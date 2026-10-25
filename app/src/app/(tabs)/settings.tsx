@@ -73,7 +73,7 @@ export default function Settings() {
 
         <Group>
           <Row label="Privacy and data" onPress={() => router.push('/privacy')} />
-          <Row label="About Voice Check" onPress={() => router.push('/learn/about')} />
+          <Row label="About Vowel" onPress={() => router.push('/learn/about')} />
           <Row label="Log out" bold onPress={logOut} />
         </Group>
       </View>

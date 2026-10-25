@@ -32,7 +32,7 @@ export default function Privacy() {
           answersBeforeCheck: r.preScreen ?? null,
         })),
       };
-      await Share.share({ message: JSON.stringify(data, null, 2), title: 'My Voice Check data' });
+      await Share.share({ message: JSON.stringify(data, null, 2), title: 'My Vowel data' });
     } catch {
       Alert.alert('Something went wrong', 'We could not prepare your data. Please try again.');
     }

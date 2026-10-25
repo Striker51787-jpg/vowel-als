@@ -1,4 +1,4 @@
-// Voice Check theme, generated from design system v1. Units are points.
+// Vowel theme, generated from design system v1. Units are points.
 // Fonts (expo-font / @expo-google-fonts): Fraunces_500Medium, Fraunces_600SemiBold,
 // AtkinsonHyperlegible_400Regular, AtkinsonHyperlegible_700Bold
 

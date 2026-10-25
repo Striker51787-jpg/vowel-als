@@ -98,3 +98,6 @@ Human decisions and checks still needed: result wording needs clinician review; 
 - First real-phone test against the local scoring server failed. Added logging to `app/src/lib/api.ts` and found the cause: Expo SDK 58's fetch rejects the old `{uri, name, type}` multipart file shape ("Unsupported FormDataPart implementation"). Fixed by copying each recording to a temporary `File` named `<task>.<ext>`, attaching that, and deleting the temporary copies after the request. Verified `tsc` only. Not yet re-tested on the phone.
 - Late-fusion experiment (`ml/experiments_v5.py`, per-task models averaged): nested-selection AUC 0.686 over 86 candidates, the same as before within noise. No model change was made.
 - First full run on the phone worked end to end against the local scoring server. Drafted `docs/VIDEO_SCRIPT.md`; numbers in it come from `ml/models/evaluation_report.json`.
+
+## 2026-10-25
+- At the team's request the app was renamed from "Voice Check" to "Vowel": app name, slug, URL scheme and bundle id in `app/app.json`, all user-visible text, the PDF, the docs and the video scripts. Earlier log entries keep the old name because they record what happened at the time. The generic phrase "a voice check" (the activity) and internal storage keys such as `voicecheck.consent.*` were left unchanged on purpose.

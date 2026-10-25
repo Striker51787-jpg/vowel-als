@@ -29,4 +29,4 @@ export const BANDS = {
 export const ALS_ASSOCIATION_URL = 'https://www.als.org';
 
 // Study details printed on the PDF footer. Add a contact email here if you want one on the page.
-export const PDF_CONTACT = 'Voice Check is a high-school research prototype built for the 2026 Congressional App Challenge.';
+export const PDF_CONTACT = 'Vowel is a high-school research prototype built for the 2026 Congressional App Challenge.';

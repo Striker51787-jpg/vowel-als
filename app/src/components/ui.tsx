@@ -207,13 +207,13 @@ export function LogoMark({ withName = true }: { withName?: boolean }) {
   const { palette } = useAppTheme();
   const l = authTokens.logoMark;
   return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', gap: spacing.m }} accessible accessibilityRole="header" accessibilityLabel="Voice Check">
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: spacing.m }} accessible accessibilityRole="header" accessibilityLabel="Vowel">
       <View style={{ width: l.diameter, height: l.diameter, borderRadius: l.diameter / 2, backgroundColor: palette.primary, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: l.gap }}>
         {l.barHeights.map((h, i) => (
           <View key={i} style={{ width: l.barWidth, height: h, borderRadius: l.barWidth / 2, backgroundColor: palette.onPrimary }} />
         ))}
       </View>
-      {withName ? <T v="button">Voice Check</T> : null}
+      {withName ? <T v="button">Vowel</T> : null}
     </View>
   );
 }

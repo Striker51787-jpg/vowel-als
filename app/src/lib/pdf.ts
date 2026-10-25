@@ -48,20 +48,20 @@ export function buildHtml(r: TestRecord, firstName: string): string {
   table { border-collapse:collapse; width:100%; font-size:16px } td { border-bottom:1px solid #BBB; padding:6px 0 } td:last-child { text-align:right }
   </style></head><body>
   <div class="p">
-    <div class="top"><div><div class="k">Voice Check</div><h1>Voice check summary</h1></div>
+    <div class="top"><div><div class="k">Vowel</div><h1>Screening summary</h1></div>
       <div class="meta"><div><b>Name:</b> ${esc(firstName || '')}</div><div><b>Date of check:</b> ${fmtLong(r.createdAt)}</div><div><b>Tasks recorded:</b> 8 of 8</div></div></div>
     <div class="band"><div class="bandbox"><div class="k" style="font-size:13px">Voice pattern band</div><div class="w">${label}</div></div>
       <div style="font-size:20px;line-height:28px">${esc(b.headline)}</div></div>
     <div class="scale">${cell('low')}${cell('borderline')}${cell('elevated')}</div>
     <div class="two">
-      <div><h2>What this means</h2>${esc(b.means)} Voice Check looks at patterns in speech sounds. It cannot tell what is causing them.</div>
+      <div><h2>What this means</h2>${esc(b.means)} Vowel looks at patterns in speech sounds. It cannot tell what is causing them.</div>
       <div><h2>Suggested next step</h2>${esc(b.next)}</div></div>
     <div><h2>Recordings in this check</h2><div class="grid">${rows.join('')}</div></div>
     <div style="flex:1;display:flex;flex-direction:column"><h2>Notes for my doctor</h2><div class="notes"></div></div>
-    <div class="foot"><b>This is a screening, not a diagnosis.</b>Voice Check is a high-school research prototype. It does not diagnose ALS or any other condition and should not replace advice from a doctor. Audio is analysed and discarded; only results are kept.<br>${esc(PDF_CONTACT)}</div>
+    <div class="foot"><b>This is a screening, not a diagnosis.</b>Vowel is a high-school research prototype. It does not diagnose ALS or any other condition and should not replace advice from a doctor. Audio is analysed and discarded; only results are kept.<br>${esc(PDF_CONTACT)}</div>
   </div>
   <div class="p">
-    <div class="top"><div><div class="k">Voice Check</div><h1>Technical appendix</h1></div><div class="meta">${fmtLong(r.createdAt)}</div></div>
+    <div class="top"><div><div class="k">Vowel</div><h1>Technical appendix</h1></div><div class="meta">${fmtLong(r.createdAt)}</div></div>
     <p style="font-size:16px;line-height:24px;margin:0">For clinicians and researchers. These numbers come from one screening session and are not a diagnostic test. The model output is a research score, not a probability of disease.</p>
     <table>
       <tr><td>Model output (research score)</td><td>${num(r.modelScore, 3)}</td></tr>
@@ -84,6 +84,6 @@ export function buildHtml(r: TestRecord, firstName: string): string {
 export async function exportSummary(r: TestRecord, firstName: string): Promise<void> {
   const { uri } = await Print.printToFileAsync({ html: buildHtml(r, firstName), width: 816, height: 1056 });
   if (await Sharing.isAvailableAsync()) {
-    await Sharing.shareAsync(uri, { mimeType: 'application/pdf', UTI: 'com.adobe.pdf', dialogTitle: 'Voice Check summary' });
+    await Sharing.shareAsync(uri, { mimeType: 'application/pdf', UTI: 'com.adobe.pdf', dialogTitle: 'Vowel summary' });
   }
 }

@@ -1,4 +1,4 @@
-# Voice Check (app)
+# Vowel (app)
 
 React Native + Expo (SDK 58), TypeScript, expo-router. A research screening tool, not a diagnosis.
 Design handoff: `../design/voice-check-handoff_1`. All design tokens live in `src/theme.ts`.

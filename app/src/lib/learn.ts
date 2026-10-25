@@ -17,9 +17,9 @@ export const TOPICS: Topic[] = [
     ],
   },
   {
-    id: 'limits', title: 'What Voice Check can and cannot do', blurb: 'A screening is not a diagnosis.',
+    id: 'limits', title: 'What Vowel can and cannot do', blurb: 'A screening is not a diagnosis.',
     sections: [
-      { heading: 'What it does', body: 'Voice Check records eight short sounds, measures things like how steady and how fast your voice is, and compares them with voices from a research study. It then shows one of three bands: Low, Borderline or Elevated.' },
+      { heading: 'What it does', body: 'Vowel records eight short sounds, measures things like how steady and how fast your voice is, and compares them with voices from a research study. It then shows one of three bands: Low, Borderline or Elevated.' },
       { heading: 'What it cannot do', body: 'It cannot tell you whether you have ALS or any other condition. It can miss real changes, and it can flag a normal voice. Treat it as a prompt to think, not an answer.' },
       { heading: 'How well did it work in testing?', body: `We tested it on ${e.dataset.n_participants} people from the ${e.dataset.name} research dataset: ${e.dataset.n_als} with ALS and ${e.dataset.n_controls} without. We measure how well a model separates the two groups with a number called ROC-AUC. A score of 1.0 would be perfect and 0.5 is no better than a coin toss. Our most honest estimate is ${f2(e.headline.overall_estimate_auc)}. That is better than chance, but modest.` },
       { heading: 'What the bands mean in practice', body: `In testing, ${als.low} of the ${e.dataset.n_als} people with ALS landed in Low, and ${ctl.elevated} of the ${e.dataset.n_controls} people without ALS landed in Elevated. So a result can be wrong in either direction. Borderline means the model could not tell.` },
@@ -40,13 +40,13 @@ export const TOPICS: Topic[] = [
     sections: [
       { heading: 'What to bring', body: 'Tap “Save a summary for my doctor” on a result to make a one-page PDF. Add a note about anything you have noticed: when it started, whether it is getting better or worse, and whether you have trouble swallowing or with your hands.' },
       { heading: 'What you could ask', body: 'Could this be something simple, like a throat or breathing problem? Should I see a speech therapist or a neurologist? What else should we check?' },
-      { body: 'Voice Check is not a medical test, so your doctor will decide what, if anything, to do next.' },
+      { body: 'Vowel is not a medical test, so your doctor will decide what, if anything, to do next.' },
     ],
   },
   {
     id: 'about', title: 'About this project', blurb: 'A high-school research study.',
     sections: [
-      { body: 'Voice Check is a high-school research project, built for the Congressional App Challenge. It explores whether a short voice recording on a phone can give an early hint of speech changes linked to ALS.' },
+      { body: 'Vowel is a high-school research project, built for the Congressional App Challenge. It explores whether a short voice recording on a phone can give an early hint of speech changes linked to ALS.' },
       { heading: 'Your privacy', body: 'Your voice is analysed and then discarded. We keep only your results: your band, a few measurements and the date. Only you can see them, and you can delete them at any time in Settings.' },
       { heading: 'The model', body: `The scoring model (version ${e.model_version}) was trained on the public ${e.dataset.name} dataset. It is a prototype and has not been approved for medical use.` },
     ],

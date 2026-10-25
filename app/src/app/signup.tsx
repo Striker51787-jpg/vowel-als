@@ -55,7 +55,7 @@ export default function SignUp() {
         />
         <Checkbox
           checked={agree} onChange={setAgree}
-          label="I understand Voice Check is a research screening prototype. It is not a diagnosis and not a medical test."
+          label="I understand Vowel is a research screening prototype. It is not a diagnosis and not a medical test."
         />
       </View>
     </Screen>

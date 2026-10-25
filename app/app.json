@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "Voice Check",
-    "slug": "voice-check",
+    "name": "Vowel",
+    "slug": "vowel",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "voicecheck",
+    "scheme": "vowel",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "org.voicecheck.app",
+      "bundleIdentifier": "org.vowel.app",
       "infoPlist": {
-        "NSMicrophoneUsageDescription": "Voice Check uses the microphone to record the eight short voice tasks. Your voice is analysed and then discarded."
+        "NSMicrophoneUsageDescription": "Vowel uses the microphone to record the eight short voice tasks. Your voice is analysed and then discarded."
       }
     },
     "android": {
@@ -40,7 +40,7 @@
       [
         "expo-audio",
         {
-          "microphonePermission": "Voice Check uses the microphone to record the eight short voice tasks. Your voice is analysed and then discarded."
+          "microphonePermission": "Vowel uses the microphone to record the eight short voice tasks. Your voice is analysed and then discarded."
         }
       ],
       "expo-status-bar"

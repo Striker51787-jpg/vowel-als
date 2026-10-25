@@ -22,7 +22,7 @@ export default function Home() {
       <View style={{ gap: spacing.l, paddingTop: spacing.l }}>
         <View>
           <T v="title" accessibilityRole="header">{displayName ? `Hello, ${displayName}.` : 'Hello.'}</T>
-          <T v="bodyLarge" color="textSecondary">{first ? 'Welcome to Voice Check.' : 'Ready when you are.'}</T>
+          <T v="bodyLarge" color="textSecondary">{first ? 'Welcome to Vowel.' : 'Ready when you are.'}</T>
         </View>
 
         <Card style={{ gap: spacing.m }}>

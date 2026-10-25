@@ -1,6 +1,6 @@
-# ALS Voice Screen
+# Vowel
 
-A phone app that records eight short voice tasks and reports whether the voice shows patterns
+**Vowel** is a phone app that records eight short voice tasks and reports whether the voice shows patterns
 that are more common in people with ALS. It is a **research screening prototype, not a
 diagnostic tool**. It cannot tell you whether you have ALS.
 

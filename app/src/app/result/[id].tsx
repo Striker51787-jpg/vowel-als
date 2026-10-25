@@ -146,7 +146,7 @@ export default function Result() {
 
             <SoftNote style={{ gap: spacing.s }}>
               <T v="button" style={{ fontSize: 20 }}>What this does and does not mean</T>
-              <T v="caption">Voice Check looks at patterns in speech sounds. It is a research screening tool, not a medical test. It can miss things and it can flag things that have everyday causes, such as a cold, tiredness or a noisy room. Only a doctor can tell what is going on.</T>
+              <T v="caption">Vowel looks at patterns in speech sounds. It is a research screening tool, not a medical test. It can miss things and it can flag things that have everyday causes, such as a cold, tiredness or a noisy room. Only a doctor can tell what is going on.</T>
             </SoftNote>
 
             <TextLink
